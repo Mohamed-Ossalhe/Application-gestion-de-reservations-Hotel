@@ -31,32 +31,32 @@
             <ul class="w-full flex flex-col gap-5 md:gap-3">
                 <h4 class="text-secondary-clr text-lg md:text-xs uppercase">reservations</h4>
                 <li class="text-2xl md:text-sm capitalize text-white hover:bg-main-clr hover:text-main-clr transition py-2 pl-3">
-                    <a href="./Dashbaord_Guests" class="flex gap-4 items-center">
+                    <a href="./Dashbaord_Guests" class="aside-menu-item flex gap-4 items-center">
                         <i class="bx bx-user"></i>
                         <span>guests</span>
                     </a>
                 </li>
                 <li class="text-2xl md:text-sm capitalize text-white hover:bg-main-clr hover:text-main-clr transition py-2 pl-3">
-                    <a href="./Dashbaord_Bookings" class="flex gap-4 items-center">
+                    <a href="./Dashbaord_Bookings" class="aside-menu-item flex gap-4 items-center">
                         <i class="bx bx-book-open"></i>
                         <span>Booking</span>
                     </a>
                 </li>
                 <h4 class="text-secondary-clr text-lg md:text-xs uppercase">management</h4>
                 <li class="text-2xl md:text-sm capitalize text-white hover:bg-main-clr hover:text-main-clr transition py-2 pl-3">
-                    <a href="./Dashbaord_Rooms" class="flex gap-4 items-center">
+                    <a href="./Dashbaord_Rooms" class="aside-menu-item flex gap-4 items-center">
                         <i class="bx bx-hotel"></i>
                         <span>rooms</span>
                     </a>
                 </li>
                 <li class="text-2xl md:text-sm capitalize text-white hover:bg-main-clr hover:text-main-clr transition py-2 pl-3">
-                    <a href="./Dashbaord_Analytics" class="flex gap-4 items-center">
+                    <a href="./Dashbaord_Analytics" class="aside-menu-item flex gap-4 items-center">
                         <i class='bx bx-bar-chart-square'></i>
                         <span>Analytics</span>
                     </a>
                 </li>
                 <li class="text-2xl md:text-sm capitalize text-white hover:bg-main-clr hover:text-main-clr transition py-2 pl-3">
-                    <a href="./Dashbaord_Settings" class="flex gap-4 items-center">
+                    <a href="./Dashbaord_Settings" class="aside-menu-item flex gap-4 items-center">
                         <i class='bx bx-cog'></i>
                         <span>Settings</span>
                     </a>

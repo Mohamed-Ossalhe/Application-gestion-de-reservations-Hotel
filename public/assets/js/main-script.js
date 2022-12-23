@@ -1,4 +1,12 @@
 $(document).ready(function() {
+    // ! switch Dashbaord sidemenu active class
+    const activeDashboardPage = window.location.pathname;
+    const dashbaordMenuLinks = $(".aside-menu-item");
+    $.each(dashbaordMenuLinks, function(el) {
+        if(dashbaordMenuLinks[el].href.includes(`${activeDashboardPage}`)) {
+            dashbaordMenuLinks[el].classList.add("side-menu-li-active");
+        }
+    })
     // ! Dynamic Form using jQuery
     $(".suite-type").hide();
     $("#room-type").change(function(){

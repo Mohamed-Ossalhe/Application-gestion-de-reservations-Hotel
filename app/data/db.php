@@ -3,9 +3,9 @@ class DB {
     private $host = 'localhost';
     private $username = 'root';
     private $password = '';
-    private $dbname; // Database Name
+    private $dbname = 'hotel_reservation'; // Database Name
 
-    public function connect(){
+    protected function connect(){
         try {
                 $conn = new PDO("mysql:host=$this->host;dbname=$this->dbname", $this->username, $this->password);
                 // set the PDO fetch Mode

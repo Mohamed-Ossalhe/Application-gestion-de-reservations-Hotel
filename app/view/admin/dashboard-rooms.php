@@ -2,7 +2,7 @@
 <!-- dashboard content start -->
     <div class="main-content h-full relative w-full md:w-full">
         <header class="header flex items-center gap-5 px-2 py-4 mb-10">
-            <div class="side-menu-btn cursor-pointer bg-white h-10 w-10 flex items-center justify-center text-2xl transition"><i class='bx bx-chevrons-left'></i></div>
+            <div class="side-menu-btn z-20 cursor-pointer bg-white h-10 w-10 flex items-center justify-center text-2xl transition"><i class='bx bx-chevrons-left'></i></div>
             <h1 class="capitalize text-3xl font-bold">hotel rooms</h1>
         </header>
         <div class="content overflow-y-auto h-4/5">

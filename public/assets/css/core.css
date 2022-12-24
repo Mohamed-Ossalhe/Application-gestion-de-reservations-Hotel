@@ -38,7 +38,8 @@
     border-color: #DEC2BA;
   }
   .side-menu-li-active {
-    background-color: #DEC2BA;
+    padding: 0.2rem 0 0.2rem 0.5rem;
+    background-color: rgba(222, 194, 186, 0.537254902);
     color: #1E1E1E;
   }
 }/*# sourceMappingURL=core.css.map */

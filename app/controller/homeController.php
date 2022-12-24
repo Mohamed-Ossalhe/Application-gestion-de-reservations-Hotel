@@ -12,12 +12,12 @@ class homeController extends Controller {
         $this->view("home/rooms");
         $this->view->render();
     }
-    public function log_in() {
-        $this->view("home/log-in");
+    public function log_in($error = "") {
+        $this->view("home/log-in", ["error" => $error]);
         $this->view->render();
     }
-    public function sign_up() {
-        $this->view("home/sign-up");
+    public function sign_up($error = "") {
+        $this->view("home/sign-up", ["error" => $error]);
         $this->view->render();
     }
 }

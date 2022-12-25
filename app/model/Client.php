@@ -17,9 +17,9 @@
         // log in
         public function logIn($data) {
             try {
-                $stmt = $this->connect()->prepare("SELECT email,password FROM `clients` WHERE email = :email AND password = :password");
+                $stmt = $this->connect()->prepare("SELECT first_name,last_name,email,password FROM `clients` WHERE email = :email");
                 $stmt->bindParam("email", $data["email"]);
-                $stmt->bindParam("password", $data["password"]);
+                // $stmt->bindParam("password", $data["password"]);
                 if($stmt->execute()) {
                     return $stmt->fetch();
                 }

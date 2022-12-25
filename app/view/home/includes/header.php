@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,9 +30,40 @@
                     <p>pestana@cr7hotels.com</p>
                 </div>
             </div>
-            <div class="language flex items-center gap-1 cursor-pointer">
-                <i class='bx bx-globe text-lg' ></i>
-                <p>EN</p>
+            <div class="language flex items-center gap-4">
+                <?php if(isset($_SESSION["logged"]) && $_SESSION["logged"] === true):?>
+                <div class="profile">
+                    <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-6 h-6 rounded-full cursor-pointer" src="https://randomuser.me/api/portraits/men/86.jpg" alt="User dropdown">
+
+                    <!-- Dropdown menu -->
+                    <div id="userDropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+                        <div class="py-3 px-4 text-sm text-gray-900 dark:text-white">
+                            <div><?php echo ($_SESSION["username"]) ? $_SESSION["username"] : "no user" ?></div>
+                            <div class="font-medium truncate"><?php echo ($_SESSION["email"]) ? $_SESSION["email"] : "no email" ?></div>
+                        </div>
+                        <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="avatarButton">
+                            <li>
+                                <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                            </li>
+                            <li>
+                                <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                            </li>
+                            <li>
+                                <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                            </li>
+                        </ul>
+                        <div class="py-1">
+                            <a href="../client/clientLogOut" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+                        </div>
+                    </div>
+                </div>
+                <?php else:?>
+                    <div></div>
+                <?php endif;?>
+                <div class="lang flex items-center gap-1 cursor-pointer">
+                    <i class='bx bx-globe text-lg' ></i>
+                    <p>EN</p>
+                </div>
             </div>
         </div>
     </div>

@@ -34,6 +34,23 @@ $(document).ready(function() {
             $(".sidebar").show(200);
         }
     });
+
+    // ! validating form inputs fields
+    let rgxPatterns = {
+        "email" : /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/
+    };
+    function validateInput(field, regex){
+        if(regex.test(field.value)) {
+            console.log("valid");
+        }else {
+            console.log("invalid");
+        }
+    }
+    const inputFields = $(".form-inputs");
+    inputFields.focusout(function(e){
+            // console.log(e.target.name);
+        validateInput(e.target, rgxPatterns[e.target.name]);
+    });
 });
 
 // ! Dynamic Form using Vanilla Js

@@ -37,19 +37,57 @@ $(document).ready(function() {
 
     // ! validating form inputs fields
     let rgxPatterns = {
-        "email" : /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/
+        "email" : /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/,
+        "password": /^[\w@-]{8,20}$/,
+        "phone_n": /^[0-9]{3}[0-9]{3}[0-9]{4}$/,
+        "first_name": /^[a-z\d]{5,20}$/,
+        "last_name": /^[a-z\d]{5,20}$/
     };
     function validateInput(field, regex){
         if(regex.test(field.value)) {
-            console.log("valid");
+            if(field.name === "email") {
+                $(".email-error").text("valide email");
+                $(".email-error").css("color","green");
+            }else if(field.name === "password") {
+                $(".pass-error").text("valide password");
+                $(".pass-error").css("color","green");
+            }else if(field.name === "phone_n") {
+                $(".phone-error").text("valide Phone number");
+                $(".phone-error").css("color","green");
+            }else if(field.name === "first_name") {
+                $(".first-n-error").text("valide First Name");
+                $(".first-n-error").css("color","green");
+            }else if(field.name === "last_name") {
+                $(".last-n-error").text("valide Last Name");
+                $(".last-n-error").css("color","green");
+            }
         }else {
-            console.log("invalid");
+            if(field.name === "email") {
+                $(".email-error").text("invalide email");
+                $(".email-error").css("color","red");
+            }else if(field.name === "password") {
+                $(".pass-error").text("invalide password");
+                $(".pass-error").css("color","red");
+            }else if(field.name === "phone_n") {
+                $(".phone-error").text("invalide Phone number");
+                $(".phone-error").css("color","red");
+            }else if(field.name === "first_name") {
+                $(".first-n-error").text("invalide First Name");
+                $(".first-n-error").css("color","red");
+            }else if(field.name === "last_name") {
+                $(".last-n-error").text("invalide Last Name");
+                $(".last-n-error").css("color","red");
+            }
         }
     }
     const inputFields = $(".form-inputs");
     inputFields.focusout(function(e){
             // console.log(e.target.name);
-        validateInput(e.target, rgxPatterns[e.target.name]);
+        if(e.target.value === "") {
+            $(".error").text("This Field Can't be Empty");
+        }else {
+            validateInput(e.target, rgxPatterns[e.target.name]);
+        }
     });
 });
 

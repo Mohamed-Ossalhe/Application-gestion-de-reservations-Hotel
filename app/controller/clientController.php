@@ -18,8 +18,14 @@
                         "phone_n" => $this->validateData($_POST["phone_n"])
                     );
                     $this->model("Client");
-                    $this->model->signUp($data);
-                    header("Location: http://localhost/Application-gestion-de-reservations-Hotel/public/home/log_in");
+                    $existed_clients = $this->model->validateClient($data["email"]);
+                    if($existed_clients) {
+                        $this->index("This Email Already Exist!");
+                        exit;
+                    }else {
+                        $this->model->signUp($data);
+                        header("Location: http://localhost/Application-gestion-de-reservations-Hotel/public/home/log_in");
+                    }
                 }else {
                     $this->index("Please Fill All The Fields!");
                     exit;
@@ -43,7 +49,7 @@
                             $_SESSION["logged"] = true;
                             header("Location: http://localhost/Application-gestion-de-reservations-Hotel/public/home/");
                         }else {
-                            $this->view("home/log-in", ["error" => "uncorrect email or password"]);
+                            $this->view("home/log-in", ["error" => "Uncorrect Email Or Password"]);
                             $this->view->render();
                         }
                     }else {
@@ -63,9 +69,9 @@
             }
         }
         // validate inputs and remove special characters
-        public function validateData($value) {
-            if(isset($value) and !empty($value)) {
-                $data = trim($value);
+        public function validateData($data) {
+            if(isset($data) and !empty($data)) {
+                $data = trim($data);
                 $data = stripcslashes($data);
                 $data = htmlspecialchars($data);
                 return $data;

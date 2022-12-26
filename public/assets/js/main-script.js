@@ -40,8 +40,8 @@ $(document).ready(function() {
         "email" : /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/,
         "password": /^[\w@-]{8,20}$/,
         "phone_n": /^[0-9]{3}[0-9]{3}[0-9]{4}$/,
-        "first_name": /^[a-z\d]{5,20}$/,
-        "last_name": /^[a-z\d]{5,20}$/
+        "first_name": /^[A-Za-z\d]{5,20}$/,
+        "last_name": /^[A-Za-z\d]{5,20}$/
     };
     function validateInput(field, regex){
         if(regex.test(field.value)) {

@@ -10,17 +10,17 @@
             <div class="analytics grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
                 <!-- box -->
                 <div class="box bg-secondary-clr text-white py-4 px-6 text-center rounded">
-                    <h4 class="capitalize text-md mb-4">total rooms</h4>
-                    <p class="text-4xl font-bold">100</p>
+                    <h4 class="capitalize text-md mb-4 capitalize">total rooms</h4>
+                    <p class="text-4xl font-bold"><?=count($this->view_data["rooms"])?></p>
                 </div>
                 <!-- box -->
                 <div class="box bg-secondary-clr text-white py-4 px-6 text-center rounded">
-                    <h4 class="capitalize text-md mb-4">total rooms</h4>
-                    <p class="text-4xl font-bold">100</p>
+                    <h4 class="capitalize text-md mb-4 capitalize">total Users</h4>
+                    <p class="text-4xl font-bold"><?=count($this->view_data["guests"])?></p>
                 </div>
                 <!-- box -->
                 <div class="box bg-secondary-clr text-white py-4 px-6 text-center rounded">
-                    <h4 class="capitalize text-md mb-4">total rooms</h4>
+                    <h4 class="capitalize text-md mb-4 capitalize">total Reservations</h4>
                     <p class="text-4xl font-bold">100</p>
                 </div>
             </div>

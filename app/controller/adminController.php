@@ -1,6 +1,7 @@
 <?php
     session_start();
     class adminController extends Controller {
+        // ! loading views
         public function index() {
             if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"] === true) {
                 $this->Dashbaord_Guests();
@@ -27,7 +28,9 @@
         // ! admin bookings page
         public function Dashbaord_Bookings() {
             if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"] === true){
-                $this->view("admin/dashboard-booking");
+                $this->model("Client");
+                $data = $this->model->getClients();
+                $this->view("admin/dashboard-booking", ["guests" => $data]);
                 $this->view->render();
             }else {
                 $this->adminLogin();
@@ -36,7 +39,7 @@
         // ! admin rooms page
         public function Dashbaord_Rooms() {
             if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"] === true){
-                $this->view("admin/dashboard-rooms");
+                $this->view("admin/dashboard-rooms", ["rooms" => $this->display_Rooms()]);
                 $this->view->render();
             }else {
                 $this->adminLogin();
@@ -45,7 +48,9 @@
         // ! admin analytics page
         public function Dashbaord_Analytics() {
             if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"] === true){
-                $this->view("admin/dashboard-analytics");
+                $this->model("Client");
+                $clients = $this->model->getClients();
+                $this->view("admin/dashboard-analytics", ["guests"=>$clients, "rooms"=>$this->display_Rooms()]);
                 $this->view->render();
             }else {
                 $this->adminLogin();
@@ -63,8 +68,8 @@
             }
         }
         // ! admin add room page
-        public function addRoom() {
-            $this->view("admin/add-room");
+        public function addRoom($error = "") {
+            $this->view("admin/add-room", ["error"=>$error]);
             $this->view->render();
         }
 
@@ -99,6 +104,53 @@
             if(session_destroy()) {
                 header("Location: http://localhost/Application-gestion-de-reservations-Hotel/public/admin/");
             }
+        }
+        // ! handling crud operations
+        // display rooms
+        public function display_Rooms(){
+            $this->model("Room");
+            $rooms = $this->model->getData();
+            return $rooms;
+        }
+        // add room
+        public function add_Room() {
+            if(isset($_POST["submit"])){
+                if(!empty($_POST["heading"]) && !empty($_POST["description"]) && !empty($_POST["room_type"]) && !empty($_POST["capacity"]) && !empty($_POST["price"]) && !empty($_FILES["image"])) {
+                    $image_name = $_FILES["image"]["name"];
+                    $image_tmp = $_FILES["image"]["tmp_name"];
+                    $data = array(
+                        "heading" => $this->validateData($_POST["heading"]),
+                        "description" => $this->validateData($_POST["description"]),
+                        "room_type" => $this->validateData($_POST["room_type"]),
+                        "capacity" => $this->validateData($_POST["capacity"]),
+                        "price" => $this->validateData($_POST["price"]),
+                        "image" => $image_name
+                    );
+                    // echo $image_tmp;
+                    $new_image_path = ROOT . DIRECTORY_SEPARATOR . "public/assets/img/rooms/" . $image_name;
+                    $this->model("Room");
+                    $this->model->insertion($data);
+                    move_uploaded_file($image_tmp, $new_image_path);
+                    header("Location: ../admin/Dashbaord_Rooms");
+                }else {
+                    $this->addRoom("<script>alert(\"Please Fill All The Fields!\")</script>");
+                }
+            }
+        }
+        // update room
+        public function update_Room() {}
+        // delete room
+        public function delete_Room($id) {
+            $this->model("Room");
+            $this->model->remove($id);
+            header("Location: ./admin/Dashbaord_Rooms");
+        }
+        // delete client
+        // delete client
+        public function deleteClient($id) {
+            $this->model("Client");
+            $this->model->removeClient($id);
+            header("Location: http://localhost/Application-gestion-de-reservations-Hotel/public/admin/Dashbaord_Guests");
         }
         // validate inputs and remove special characters
         public function validateData($data) {

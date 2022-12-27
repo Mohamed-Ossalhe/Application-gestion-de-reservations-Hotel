@@ -38,6 +38,16 @@
                 return $e->getMessage();
             }
         }
+        // remove client
+        public function removeClient($data) {
+            try {
+                $stmt = $this->connect()->prepare("DELETE FROM `clients` WHERE client_id = :id");
+                $stmt->bindParam("id", $data);
+                $stmt->execute();
+            }catch(PDOException $e) {
+                return $e->getMessage();
+            }
+        }
         // validate client
         public function validateClient($data) {
             try {

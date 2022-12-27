@@ -1,9 +1,17 @@
 <?php include 'includes/admin-menu.php'?>
 <!-- dashboard content start -->
     <div class="main-content h-full relative w-full md:w-full">
-        <header class="header flex items-center gap-5 px-2 py-4 mb-10">
-            <div class="side-menu-btn z-20 cursor-pointer bg-white h-10 w-10 flex items-center justify-center text-2xl transition"><i class='bx bx-chevrons-left'></i></div>
-            <h1 class="capitalize text-3xl font-bold">hotel rooms</h1>
+        <header class="header flex items-center justify-between px-2 py-4 mb-10">
+            <div class="flex items-center gap-5">
+                <div class="side-menu-btn z-20 cursor-pointer bg-white h-10 w-10 flex items-center justify-center text-2xl transition"><i class='bx bx-chevrons-left'></i></div>
+                <h1 class="capitalize text-3xl font-bold">hotel rooms</h1>
+            </div>
+            <a href="../admin/addRoom">
+                <button class="add-room py-2 px-6 bg-black text-white rounded flex items-center gap-2 hover:bg-white hover:text-black transition">
+                    <i class='bx bx-plus'></i>
+                    Add Room
+                </button>
+            </a>
         </header>
         <div class="content overflow-y-auto h-4/5">
             <!-- ! Card -->

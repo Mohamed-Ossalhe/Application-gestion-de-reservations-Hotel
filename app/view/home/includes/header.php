@@ -97,12 +97,16 @@
                     <li>
                         <a href="./contact" class="block py-2 pl-3 pr-4 text-main-clr hover:text-secondary-clr md:p-0">Contact</a>
                     </li>
-                    <i class='bx bxs-circle text-secondary-clr text-sm hidden md:block' ></i>
-                    <li>
-                    <a href="./sign_up" class="block py-2 pl-3 pr-4 text-main-clr hover:text-secondary-clr md:p-0">sign up</a>
-                    </li>
+                    <?php if(isset($_SESSION["logged"]) && $_SESSION["logged"] === true):?>
+                        <li></li>
+                    <?php else:?>
+                        <i class='bx bxs-circle text-secondary-clr text-sm hidden md:block' ></i>
+                        <li>
+                            <a href="./sign_up" class="block py-2 pl-3 pr-4 text-main-clr hover:text-secondary-clr md:p-0">sign up</a>
+                        </li>
+                    <?php endif;?>
                 </ul>
-                <a href="./log_in"><button class="uppercase py-2 px-5 border border-2 border-black hover:bg-secondary-clr hover:text-white transition">book now</button></a>
+                <a href="<?php echo (isset($_SESSION["logged"]) && $_SESSION["logged"] === true) ? "./rooms" : "./log_in"?>"><button class="uppercase py-2 px-5 border border-2 border-black hover:bg-black hover:text-white transition">book now</button></a>
             </div>
         </div>
     </nav>

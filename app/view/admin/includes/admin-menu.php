@@ -24,8 +24,8 @@
             <div class="side-user w-full mb-6 text-white flex items-center gap-4">
                 <i class="bx bx-user-circle text-8xl md:text-4xl"></i>
                 <div class="user">
-                    <h3 class="text-2xl md:text-lg">Admin</h3>
-                    <small class="text-sm md:text-xs">Admin</small>
+                    <h3 class="text-2xl md:text-lg"><?php echo $_SESSION["admin_name"];?></h3>
+                    <small class="text-sm md:text-xs"><?php echo $_SESSION["admin_email"];?></small>
                 </div>
             </div>
             <ul class="w-full flex flex-col gap-5 md:gap-3">
@@ -62,7 +62,7 @@
                     </a>
                 </li>
                 <li class="text-2xl md:text-base capitalize text-white hover:bg-main-clr hover:text-main-clr transition py-2 pl-3">
-                    <a href="#" class="flex gap-4 items-center">
+                    <a href="../admin/adminLogOut" class="flex gap-4 items-center">
                         <i class='bx bx-power-off text-secondary-clr' ></i>
                         <span>log out</span>
                     </a>

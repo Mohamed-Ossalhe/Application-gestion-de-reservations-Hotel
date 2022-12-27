@@ -19,7 +19,7 @@
     <div class="container flex items-center justify-between h-screen md:pl-8 montserrat-font">
         <!-- col1 -->
         <div class="log-in-form mx-7 w-full md:w-2/4">
-            <a href="./"><img src="<?= BASE_URL?>/public/assets/img/logo-1.png" alt="" class="-translate-y-9"></a>
+            <a href="../home/"><img src="<?= BASE_URL?>/public/assets/img/logo-1.png" alt="" class="-translate-y-9"></a>
             <h2 class="text-3xl font-medium mb-5 wilkysta-font"><span class="montserrat-font">Hello! </span>Welcome to Pestana</h2>
             <form action="../client/clientSignUp" method="POST">
                 <p class="text-red-600"><?php echo $this->view_data["error"]?></p>
@@ -38,12 +38,12 @@
                     <div class="relative z-0 mb-6 w-full group">
                         <input type="text" name="first_name" id="floating_first_name" class="form-inputs block py-2.5 px-0 w-full text-sm text-main-clr bg-transparent border-0 border-b-2 border-color border-seco appearance-none focus:outline-none focus:ring-0 focus:border-clr peer" placeholder=" " required />
                         <label for="floating_first_name" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-secondary-clr peer-focus:text-secondary-clr peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First name</label>
-                        <p class="first-error error"></p>
+                        <p class="first-n-error error"></p>
                     </div>
                     <div class="relative z-0 mb-6 w-full group">
                         <input type="text" name="last_name" id="floating_last_name" class="form-inputs block py-2.5 px-0 w-full text-sm text-main-clr bg-transparent border-0 border-b-2 border-color border-seco appearance-none focus:outline-none focus:ring-0 focus:border-clr peer" placeholder=" " required />
                         <label for="floating_last_name" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-secondary-clr peer-focus:text-secondary-clr peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last name</label>
-                        <p class="last-error error"></p>
+                        <p class="last-n-error error"></p>
                     </div>
                 </div>
                 <div class="relative z-0 mb-6 w-full md:w-4/5 group">

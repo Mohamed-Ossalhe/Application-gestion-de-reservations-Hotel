@@ -56,6 +56,12 @@
                     </a>
                 </li>
                 <li class="text-2xl md:text-base capitalize text-white hover:bg-main-clr hover:text-main-clr transition py-2 pl-3">
+                    <a href="../home/" class="aside-menu-item flex gap-4 items-center">
+                        <i class='bx bx-home text-secondary-clr'></i>
+                        <span>Client View</span>
+                    </a>
+                </li>
+                <li class="text-2xl md:text-base capitalize text-white hover:bg-main-clr hover:text-main-clr transition py-2 pl-3">
                     <a href="./Dashbaord_Settings" class="aside-menu-item flex gap-4 items-center">
                         <i class='bx bx-cog text-secondary-clr'></i>
                         <span>Settings</span>

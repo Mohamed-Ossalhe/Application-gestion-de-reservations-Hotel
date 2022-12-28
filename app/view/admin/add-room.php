@@ -20,14 +20,16 @@
         <header class="flex items-center justify-center w-96">
             <h1 class="text-2xl uppercase font-bold">Add Room</h1>
         </header>
-        <form class="w-96" method="POST">
+        <p class="error text-red-600"><?php echo $this->view_data["error"]?></p>
+        <form class="w-96" action="../admin/add_Room" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
-                <label for="text" class="block mb-2 text-sm font-medium">Room Number</label>
-                <input type="text" id="text" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Room Number" required>
+                <label for="heading" class="block mb-2 text-sm font-medium">Room Capacity</label>
+                <input type="text" name="heading" id="heading" min="0" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Room Price">
             </div>
+
             <div class="mb-3">
                 <label for="message" class="block mb-2 text-sm font-medium text-gray-900">Room Description</label>
-                <textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Room Description"></textarea>
+                <textarea id="message" name="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Room Description"></textarea>
             </div>
             
             <div class="flex items-center gap-5">
@@ -42,7 +44,7 @@
 
                 <div class="mb-3 suite-type w-full">
                     <label for="suite-type" class="block mb-2 text-sm font-medium text-gray-900">Select Suite Type</label>
-                    <select id="suite-type" name="suite-type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                    <select id="suite-type" name="suite_type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                         <option value="1">Standard suite room</option>
                         <option value="2">Junior Suite</option>
                         <option value="3">Presidential suite</option>
@@ -55,13 +57,18 @@
             </div>
 
             <div class="mb-3">
+                <label for="capacity" class="block mb-2 text-sm font-medium">Room Capacity</label>
+                <input type="number" name="capacity" id="capacity" min="0" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Room Price">
+            </div>
+
+            <div class="mb-3">
                 <label for="price" class="block mb-2 text-sm font-medium">Room Price / Night</label>
-                <input type="number" id="price" min="0" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Room Price" required>
+                <input type="number" name="price" id="price" min="0" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Room Price">
             </div>
 
             <div class="mb-3">
                 <label class="block mb-2 text-sm font-medium" for="file_input">Upload file</label>
-                <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50" id="file_input" type="file">
+                <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50" name="image" id="file_input" type="file">
             </div>
             <div class="btns flex items-center justify-between">
                 <a href="../admin/Dashbaord_Rooms">

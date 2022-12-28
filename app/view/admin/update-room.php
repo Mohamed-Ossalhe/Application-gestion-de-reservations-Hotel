@@ -18,10 +18,10 @@
     
     <div class="container mx-auto flex items-center flex-col justify-center h-screen w-screen text-black">
         <header class="flex items-center justify-center w-96">
-            <h1 class="text-2xl uppercase font-bold">Add Room</h1>
+            <h1 class="text-2xl uppercase font-bold">Update Room</h1>
         </header>
         <p class="error text-red-600"><?php echo $this->view_data["error"]?></p>
-        <form class="w-96" action="../admin/add_Room" method="POST" enctype="multipart/form-data">
+        <form class="w-96" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="heading" class="block mb-2 text-sm font-medium">Room Heading</label>
                 <input type="text" name="heading" id="heading" min="0" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Room Heading">
@@ -71,7 +71,7 @@
                 <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50" name="image" id="file_input" type="file">
             </div>
             <div class="btns flex items-center justify-between">
-                <a href="../admin/Dashbaord_Rooms">
+                <a href="../../admin/Dashbaord_Rooms">
                     <button type="button" class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2 text-center">Cancel</button>
                 </a>
                 <button type="submit" name="submit" class="text-white bg-black hover:bg-black-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Save Room</button>

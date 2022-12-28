@@ -63,6 +63,7 @@ Le client souhaite avoir un back-office pour gérer les chambres et aussi un fro
 * L'application doit respecter l'architecture MVC (Model-View-Controller).
 * L'utilisation de Bootstrap ou Tailwind ...
 * Utilisation de JS pour faire le formulaire dynamique.
+
 **Performance criteria:**
 - Le code source est complété selon les consignes et respecte les bonnes pratiques.
 - Le code de l'application doit être bien organisé le design de l'application est responsive et pratique.

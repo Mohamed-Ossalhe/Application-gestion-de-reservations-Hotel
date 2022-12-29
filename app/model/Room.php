@@ -11,6 +11,18 @@
                 return $e->getMessage();
             }
         }
+        // get one room
+        public function getDataRow($id) {
+            try {
+                $stmt = $this->connect()->prepare("SELECT * FROM `rooms` WHERE room_id = :id");
+                $stmt->bindParam("id", $id);
+                if($stmt->execute()) {
+                    return $stmt->fetch();
+                }
+            }catch(PDOException $e) {
+                return $e->getMessage();
+            }
+        }
         // add room
         public function insertion($data) {
             try {
@@ -58,19 +70,27 @@
                 return $e->getMessage();
             }
         }
-        public function updateWithImage($data) {
-            try {
-                
-            }catch(PDOException $e) {
-                return $e->getMessage();
-            }
-        }
         // remove room
         public function remove($data) {
             try {
                 $stmt = $this->connect()->prepare("DELETE FROM `rooms` WHERE room_id = :id");
                 $stmt->bindParam("id", $data);
                 $stmt->execute();
+            }catch(PDOException $e) {
+                return $e->getMessage();
+            }
+        }
+
+        // ! search data
+        public function searchData($data) {
+            try {
+                $stmt = $this->connect()->prepare("SELECT * FROM `rooms` WHERE room_type = :room_type AND capacity = :capacity");
+                $stmt->bindParam("room_type", $data["room_type"]);
+                // $stmt->bindParam("suite_type", $data["suite_type"]);
+                $stmt->bindParam("capacity", $data["capacity"]);
+                if($stmt->execute()) {
+                    return $stmt->fetchAll();
+                }
             }catch(PDOException $e) {
                 return $e->getMessage();
             }

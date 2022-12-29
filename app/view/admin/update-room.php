@@ -20,50 +20,52 @@
         <header class="flex items-center justify-center w-96">
             <h1 class="text-2xl uppercase font-bold">Update Room</h1>
         </header>
-        <p class="error text-red-600"><?php echo $this->view_data["error"]?></p>
+        <p class="error text-red-600">
+            <?php echo $this->view_data["error"]?>
+        </p>
+        <?php $room = $this->view_data["room"];?>
         <form class="w-96" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="heading" class="block mb-2 text-sm font-medium">Room Heading</label>
-                <input type="text" name="heading" id="heading" min="0" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Room Heading">
+                <input type="text" value="<?=$room["room_heading"]?>" name="heading" id="heading" min="0" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Room Heading">
             </div>
 
             <div class="mb-3">
                 <label for="message" class="block mb-2 text-sm font-medium text-gray-900">Room Description</label>
-                <textarea id="message" name="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Room Description"></textarea>
+                <textarea id="message" name="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Room Description"><?=$room["room_description"]?></textarea>
             </div>
             
             <div class="flex items-center gap-5">
                 <div class="mb-3 w-full">
                     <label for="room-type" class="block mb-2 text-sm font-medium text-gray-900">Select Room Type</label>
                     <select id="room-type" name="room_type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                        <option value="single-bed">Single Bed</option>
-                        <option value="double-bed">Double Bed</option>
-                        <option value="suite">Suite</option>
+                        <option value="single-bed" <?php echo ($room["room_type"] === "single-bed") ? "selected" : "" ?>>Single Bed</option>
+                        <option value="double-bed" <?php echo ($room["room_type"] === "double-bed") ? "selected" : "" ?>>Double Bed</option>
+                        <option value="suite" <?php echo ($room["room_type"] === "suite") ? "selected" : "" ?>>Suite</option>
                     </select>
                 </div>
 
                 <div class="mb-3 suite-type w-full">
                     <label for="suite-type" class="block mb-2 text-sm font-medium text-gray-900">Select Suite Type</label>
                     <select id="suite-type" name="suite_type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                        <option value="1">Standard suite room</option>
-                        <option value="2">Junior Suite</option>
-                        <option value="3">Presidential suite</option>
-                        <option value="4"> Penthouse suites</option>
-                        <option value="4">Honeymoon suite</option>
-                        <option value="4">Honeymoon suite</option>
-                        <option value="4">Bridal suite</option>
+                        <option value="Standard" <?php echo ($room["suite_type"] === "Standard") ? "selected" : "" ?>>Standard suite room</option>
+                        <option value="Junior" <?php echo ($room["suite_type"] === "Junior") ? "selected" : "" ?>>Junior Suite</option>
+                        <option value="Presidential" <?php echo ($room["suite_type"] === "Presidential") ? "selected" : "" ?>>Presidential suite</option>
+                        <option value="Penthouse" <?php echo ($room["suite_type"] === "Penthouse") ? "selected" : "" ?>> Penthouse suites</option>
+                        <option value="Honeymoon" <?php echo ($room["suite_type"] === "Honeymoon") ? "selected" : "" ?>>Honeymoon suite</option>
+                        <option value="Bridal" <?php echo ($room["suite_type"] === "Bridal") ? "selected" : "" ?>>Bridal suite</option>
                     </select>
                 </div>
             </div>
 
             <div class="mb-3">
                 <label for="capacity" class="block mb-2 text-sm font-medium">Room Capacity</label>
-                <input type="number" name="capacity" id="capacity" min="0" max="6" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Room Capacity">
+                <input type="number" value="<?=$room["capacity"]?>" name="capacity" id="capacity" min="0" max="6" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Room Capacity">
             </div>
 
             <div class="mb-3">
                 <label for="price" class="block mb-2 text-sm font-medium">Room Price / Night</label>
-                <input type="number" name="price" id="price" min="0" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Room Price">
+                <input type="number" value="<?=$room["room_price"]?>" name="price" id="price" min="0" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Room Price">
             </div>
 
             <div class="mb-3">

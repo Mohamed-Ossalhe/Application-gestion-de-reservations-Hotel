@@ -22,12 +22,49 @@
                 $stmt->bindParam("image", $data["image"]);
                 $stmt->bindParam("heading", $data["heading"]);
                 $stmt->bindParam("capacity", $data["capacity"]);
-                $stmt->execute();
+                if($stmt->execute()) {
+                    return "inserted";
+                }
             }catch(PDOException $e) {
                 return $e->getMessage();
             }
         }
         // update room
+        public function update($data) {
+            try {
+                if(!empty($data["image"])) {
+                    $stmt = $this->connect()->prepare("UPDATE `rooms` SET room_description = :desc, room_type = :r_type, suite_type = :s_type, room_price = :price, room_image = :image, room_heading = :heading, capacity = :capacity WHERE room_id = :id");
+                    $stmt->bindParam("desc", $data["description"]);
+                    $stmt->bindParam("r_type", $data["room_type"]);
+                    $stmt->bindParam("s_type", $data["suite_type"]);
+                    $stmt->bindParam("price", $data["price"]);
+                    $stmt->bindParam("heading", $data["heading"]);
+                    $stmt->bindParam("capacity", $data["capacity"]);
+                    $stmt->bindParam("image", $data["image"]);
+                    $stmt->bindParam("id", $data["id"]);
+                    $stmt->execute();
+                }else {
+                    $stmt = $this->connect()->prepare("UPDATE `rooms` SET room_description = :desc, room_type = :r_type, suite_type = :s_type, room_price = :price, room_heading = :heading, capacity = :capacity WHERE room_id = :id");
+                    $stmt->bindParam("desc", $data["description"]);
+                    $stmt->bindParam("r_type", $data["room_type"]);
+                    $stmt->bindParam("s_type", $data["suite_type"]);
+                    $stmt->bindParam("price", $data["price"]);
+                    $stmt->bindParam("heading", $data["heading"]);
+                    $stmt->bindParam("capacity", $data["capacity"]);
+                    $stmt->bindParam("id", $data["id"]);
+                    $stmt->execute();
+                }
+            }catch(PDOException $e) {
+                return $e->getMessage();
+            }
+        }
+        public function updateWithImage($data) {
+            try {
+                
+            }catch(PDOException $e) {
+                return $e->getMessage();
+            }
+        }
         // remove room
         public function remove($data) {
             try {

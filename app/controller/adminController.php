@@ -57,11 +57,11 @@
             }
         }
         // ! admin settings page
-        public function Dashbaord_Settings() {
+        public function Dashbaord_Settings($error = "") {
             if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"] === true){
                 $this->model("Admin");
                 $data = $this->model->getAdmin();
-                $this->view("admin/dashboard-settings", ["adminData" => $data]);
+                $this->view("admin/dashboard-settings", ["adminData" => $data, "error" => $error]);
                 $this->view->render();
             }else {
                 $this->adminLogin();
@@ -70,6 +70,12 @@
         // ! admin add room page
         public function addRoom($error = "") {
             $this->view("admin/add-room", ["error"=>$error]);
+            $this->view->render();
+        }
+        // ! admin update room page
+        public function updateRoom($id, $error="") {
+            $this->update_Room($id);
+            $this->view("admin/update-room", ["error" => $error]);
             $this->view->render();
         }
 
@@ -105,6 +111,33 @@
                 header("Location: http://localhost/Application-gestion-de-reservations-Hotel/public/admin/");
             }
         }
+        // ! update admin information
+        public function adminUpdate() {
+            if(isset($_POST["submit"])) {
+                if(isset($_SESSION["adminLogged"])) {
+                    if(!empty($_POST["email"]) && !empty($_POST["old_password"]) && !empty($_POST["new_password"]) && !empty($_POST["full_name"])) {
+                        $old_password = $_POST["old_password"];
+                        $this->model("Admin");
+                        $adminData = $this->model->getAdmin();
+                        if(password_verify($old_password, $adminData["admin_password"])) {
+                            $data = array(
+                                "email" => filter_var($this->validateData($_POST["email"]), FILTER_SANITIZE_EMAIL),
+                                "new_password" => password_hash($this->validateData($_POST["new_password"]), PASSWORD_DEFAULT),
+                                "full_name" => $this->validateData($_POST["full_name"])
+                            );
+                            $this->model->updateAdmin($data);
+                            header("Location: ../admin/Dashbaord_Settings");
+                        }else {
+                            $this->Dashbaord_Settings("Uncorrect Password");
+                        }
+                    }else {
+                        $this->Dashbaord_Settings("Please Fill All The Fields!");
+                    }
+                }else {
+                    header("Location: ../admin/");
+                }
+            }
+        }
         // ! handling crud operations
         // display rooms
         public function display_Rooms(){
@@ -127,6 +160,7 @@
                         "image" => $image_name
                     );
                     // echo $image_tmp;
+                    // var_dump($data);
                     $new_image_path = ROOT . DIRECTORY_SEPARATOR . "public/assets/img/rooms/" . $image_name;
                     $this->model("Room");
                     $this->model->insertion($data);
@@ -138,12 +172,35 @@
             }
         }
         // update room
-        public function update_Room() {}
+        public function update_Room($id) {
+            if(isset($_POST["submit"])){
+                if(!empty($_POST["heading"]) && !empty($_POST["description"]) && !empty($_POST["room_type"]) && !empty($_POST["capacity"]) && !empty($_POST["price"])) {
+                    $image_name = $_FILES["image"]["name"];
+                    $image_tmp = $_FILES["image"]["tmp_name"];
+                    $data = array(
+                        "heading" => $this->validateData($_POST["heading"]),
+                        "description" => $this->validateData($_POST["description"]),
+                        "room_type" => $this->validateData($_POST["room_type"]),
+                        "capacity" => $this->validateData($_POST["capacity"]),
+                        "price" => $this->validateData($_POST["price"]),
+                        "image" => $image_name,
+                        "id" => $id
+                    );
+                    $new_image_path = ROOT . DIRECTORY_SEPARATOR . "public/assets/img/rooms/" . $image_name;
+                    $this->model("Room");
+                    $this->model->update($data);
+                    move_uploaded_file($image_tmp, $new_image_path);
+                    header("Location: ". BASE_URL ."public/admin/Dashbaord_Rooms");
+                }else {
+                    $this->updateRoom("<script>alert(\"Please Fill All The Fields!\")</script>");
+                }
+            }
+        }
         // delete room
         public function delete_Room($id) {
             $this->model("Room");
             $this->model->remove($id);
-            header("Location: ./admin/Dashbaord_Rooms");
+            header("Location: ". BASE_URL ."public/admin/Dashbaord_Rooms");
         }
         // delete client
         // delete client

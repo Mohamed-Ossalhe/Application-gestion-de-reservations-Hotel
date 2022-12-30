@@ -74,8 +74,9 @@
         }
         // ! admin update room page
         public function updateRoom($id, $error="") {
+            $room = $this->display_one_room($id);
             $this->update_Room($id);
-            $this->view("admin/update-room", ["error" => $error]);
+            $this->view("admin/update-room", ["error" => $error, "room" => $room]);
             $this->view->render();
         }
 
@@ -145,20 +146,39 @@
             $rooms = $this->model->getData();
             return $rooms;
         }
+        // display one room
+        public function display_one_room($id) {
+            $this->model("Room");
+            $room = $this->model->getDataRow($id);
+            return $room;
+        }
         // add room
         public function add_Room() {
             if(isset($_POST["submit"])){
                 if(!empty($_POST["heading"]) && !empty($_POST["description"]) && !empty($_POST["room_type"]) && !empty($_POST["capacity"]) && !empty($_POST["price"]) && !empty($_FILES["image"])) {
                     $image_name = $_FILES["image"]["name"];
                     $image_tmp = $_FILES["image"]["tmp_name"];
-                    $data = array(
-                        "heading" => $this->validateData($_POST["heading"]),
-                        "description" => $this->validateData($_POST["description"]),
-                        "room_type" => $this->validateData($_POST["room_type"]),
-                        "capacity" => $this->validateData($_POST["capacity"]),
-                        "price" => $this->validateData($_POST["price"]),
-                        "image" => $image_name
-                    );
+                    $data = array();
+                    if($_POST["room_type"] === "suite") {
+                        $data = array(
+                            "heading" => $this->validateData($_POST["heading"]),
+                            "description" => $this->validateData($_POST["description"]),
+                            "room_type" => $this->validateData($_POST["room_type"]),
+                            "suite_type" => $this->validateData($_POST["suite_type"]),
+                            "capacity" => $this->validateData($_POST["capacity"]),
+                            "price" => $this->validateData($_POST["price"]),
+                            "image" => $image_name
+                        );
+                    }else {
+                        $data = array(
+                            "heading" => $this->validateData($_POST["heading"]),
+                            "description" => $this->validateData($_POST["description"]),
+                            "room_type" => $this->validateData($_POST["room_type"]),
+                            "capacity" => $this->validateData($_POST["capacity"]),
+                            "price" => $this->validateData($_POST["price"]),
+                            "image" => $image_name
+                        );
+                    }
                     // echo $image_tmp;
                     // var_dump($data);
                     $new_image_path = ROOT . DIRECTORY_SEPARATOR . "public/assets/img/rooms/" . $image_name;
@@ -177,15 +197,29 @@
                 if(!empty($_POST["heading"]) && !empty($_POST["description"]) && !empty($_POST["room_type"]) && !empty($_POST["capacity"]) && !empty($_POST["price"])) {
                     $image_name = $_FILES["image"]["name"];
                     $image_tmp = $_FILES["image"]["tmp_name"];
-                    $data = array(
-                        "heading" => $this->validateData($_POST["heading"]),
-                        "description" => $this->validateData($_POST["description"]),
-                        "room_type" => $this->validateData($_POST["room_type"]),
-                        "capacity" => $this->validateData($_POST["capacity"]),
-                        "price" => $this->validateData($_POST["price"]),
-                        "image" => $image_name,
-                        "id" => $id
-                    );
+                    $data = array();
+                    if($_POST["room_type"] === "suite") {
+                        $data = array(
+                            "heading" => $this->validateData($_POST["heading"]),
+                            "description" => $this->validateData($_POST["description"]),
+                            "room_type" => $this->validateData($_POST["room_type"]),
+                            "suite_type" => $this->validateData($_POST["suite_type"]),
+                            "capacity" => $this->validateData($_POST["capacity"]),
+                            "price" => $this->validateData($_POST["price"]),
+                            "image" => $image_name,
+                            "id" => $id
+                        );
+                    }else {
+                        $data = array(
+                            "heading" => $this->validateData($_POST["heading"]),
+                            "description" => $this->validateData($_POST["description"]),
+                            "room_type" => $this->validateData($_POST["room_type"]),
+                            "capacity" => $this->validateData($_POST["capacity"]),
+                            "price" => $this->validateData($_POST["price"]),
+                            "image" => $image_name,
+                            "id" => $id
+                        );
+                    }
                     $new_image_path = ROOT . DIRECTORY_SEPARATOR . "public/assets/img/rooms/" . $image_name;
                     $this->model("Room");
                     $this->model->update($data);

@@ -15,8 +15,8 @@
         </header>
         <div class="content overflow-y-auto h-4/5">
             <?php 
-                $rooms = $this->view_data["rooms"];
-                foreach($rooms as $room):
+                if($this->view_data["rooms"]) {
+                    foreach($this->view_data["rooms"] as $room){
             ?>
             <!-- ! Card -->
             <div class="card bg-white flex items-center justify-between px-4 py-4 mx-3 mb-4 rounded">
@@ -40,27 +40,23 @@
                 <div class="opeartions-price flex flex-col items-end w-1/4">
                     <!-- operations -->
                     <div class="operation">
-                        <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots" class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded hover:bg-gray-100 focus:outline-none" type="button"> 
-                            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path></svg>
-                        </button>
-                        
-                        <!-- Dropdown menu -->
-                        <div id="dropdownDots" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                            <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
-                                <li>
-                                    <a href="../admin/updateRoom/<?=$room["room_id"]?>" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit Room</a>
-                                </li>
-                                <li>
-                                    <a href="../admin/delete_Room/<?=$room["room_id"]?>" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Remove Room</a>
-                                </li>
-                            </ul>
-                        </div>
+                        <ul class="py-1 flex items-center text-sm text-gray-700">
+                            <li>
+                                <a href="../admin/updateRoom/<?=$room["room_id"]?>" class="block py-2 px-2 hover:bg-gray-100 rounded text-2xl dark:hover:bg-gray-600 dark:hover:text-white"><i class='bx bx-edit' ></i></a>
+                            </li>
+                            <li>
+                                <a href="../admin/delete_Room/<?=$room["room_id"]?>" class="block py-2 px-2 hover:bg-gray-100 rounded text-2xl dark:hover:bg-gray-600 dark:hover:text-white"><i class='bx bx-trash-alt' ></i></a>
+                            </li>
+                        </ul>
                     </div>
                     <!-- price -->
                     <strong class="wilkysta-font text-2xl mt-7">$<?=$room["room_price"]?>/night</strong>
                 </div>
             </div>
-            <?php endforeach;?>
+            <?php 
+                    }
+                }
+            ?>
         </div>
     </div>
     <!-- dashboard content end -->

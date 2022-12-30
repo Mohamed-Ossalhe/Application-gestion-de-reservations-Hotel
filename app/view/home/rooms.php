@@ -8,7 +8,7 @@
             <div class="hero-search mt-2">
                 <!-- search form -->
                 <div class="search bg-white w-4/5 mx-auto py-4 px-3 md:translate-y-12 drop-shadow-xl">
-                    <form action="#" class="flex items-left flex-col md:items-center md:flex-row justify-between md:gap-3">
+                    <form class="flex items-left flex-col md:items-center md:flex-row justify-between md:gap-3" method="POST">
                         <!-- room type -->
                         <div class="input-field mb-4 md:mb-0">
                             <label for="room-type" class="montserrat-font">Room Type</label>
@@ -21,14 +21,14 @@
                         <!-- suite-type -->
                         <div class="input-field suite-type mb-4 md:mb-0">
                             <label for="suite-type" class=" montserrat-font">Suite Type</label>
-                            <select id="suite-type" name="suite-type" class="text-main-clr w-full md:w-auto text-sm block p-2.5 mt-2  montserrat-font">
-                                <option value="1">Standard suite room</option>
-                                <option value="2">Junior Suite</option>
-                                <option value="3">Presidential suite</option>
-                                <option value="4"> Penthouse suites</option>
-                                <option value="4">Honeymoon suite</option>
-                                <option value="4">Honeymoon suite</option>
-                                <option value="4">Bridal suite</option>
+                            <select id="suite-type" name="suite_type" class="text-main-clr w-full md:w-auto text-sm block p-2.5 mt-2  montserrat-font">
+                                <option>SELECT</option>
+                                <option value="Standard">Standard suite room</option>
+                                <option value="Junior">Junior Suite</option>
+                                <option value="Presidential">Presidential suite</option>
+                                <option value="Presidential"> Penthouse suites</option>
+                                <option value="Honeymoon">Honeymoon suite</option>
+                                <option value="Bridal">Bridal suite</option>
                             </select>
                         </div>
                         <!-- date picker -->
@@ -46,7 +46,7 @@
                         <!-- room number -->
                         <div class="input-field">
                             <label for="room-number" class="montserrat-font">Guest</label>
-                            <select id="room-number" name="guest" class="text-main-clr w-full md:w-auto text-sm block p-2.5 mt-2 montserrat-font">
+                            <select id="room-number" name="capacity" class="text-main-clr w-full md:w-auto text-sm block p-2.5 mt-2 montserrat-font">
                                 <option value="1">1 Adult</option>
                                 <option value="2">2 Adults</option>
                                 <option value="3">1 Adult, 1 Child</option>
@@ -54,7 +54,7 @@
                                 <option value="4">2 Adults, 3 Childs</option>
                             </select>
                         </div>
-                        <input type="submit" value="SEARCH" class="uppercase cursor-pointer mt-8 py-2 px-5 bg-black text-white border border-2 border-black wilkysta-font hover:bg-white hover:text-black transition">
+                        <input type="submit" name="search" id="searchBtn" value="SEARCH" class="uppercase cursor-pointer mt-8 py-2 px-5 bg-black text-white border border-2 border-black wilkysta-font hover:bg-white hover:text-black transition">
                     </form>
                 </div>
             </div>
@@ -65,190 +65,37 @@
     <div class="rooms-section mt-20">
         <div class="container mx-auto">
             <!-- ? use grid here -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-7 gap-x-10 gap-y-12">
+            <div class="rooms-section grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-7 gap-x-10 gap-y-12">
                 <!-- *row -->
+                <?php
+                $rooms = $this->view_data["rooms"];
+                // var_dump($rooms);
+                if($rooms > 0) {
+                    foreach($rooms as $room) {
+                ?>
                 <!-- card -->
                 <div class="card bg-secondary-clr">
-                    <img src="<?= BASE_URL?>/public/assets/img/bed-1.jpg" alt="" class="w-full">
+                    <img src="<?= BASE_URL?>/public/assets/img/rooms/<?=$room["room_image"]?>" alt="" class="w-full">
                     <div class="card-text text-white p-3">
-                        <h1 class="wilkysta-font text-3xl">Comfort room with balcony</h1>
+                        <h1 class="wilkysta-font text-3xl"><?=$room["room_heading"]?></h1>
                         <div class="info montserrat-font flex items-center gap-4 text-sm my-2">
-                            <p>2 beds</p>
+                            <p>Capacity: <?=$room["capacity"]?></p>
                             <i class="bx bxs-circle text-xs text-gray-400"></i>
-                            <p>1 bathroom</p>
+                            <p>Room Type: <?=$room["room_type"]?></p>
                             <i class="bx bxs-circle text-xs text-gray-400"></i>
-                            <p>balcony</p>
+                            <p><?php echo ($room["suite_type"]) ? "Suite Type: ".$room["suite_type"] : ""?></p>
                         </div>
                         <a href="#" class="wilkysta-font uppercase text-lg underline decoration-dotted">see details</a>
                         <hr class="my-2">
                         <div class="price-btn wilkysta-font flex items-center justify-between">
-                            <p class="uppercase text-2xl">$<span>1200</span>/night</p>
+                            <p class="uppercase text-2xl">$<span><?=$room["room_price"]?></span>/night</p>
                             <a href="#"><button class="border border-2 border-white py-2 px-5 uppercase hover:bg-white hover:text-black transition">book Now</button></a>
                         </div>
                     </div>
                 </div>
-                <!-- card -->
-                <div class="card bg-secondary-clr">
-                    <img src="<?= BASE_URL?>/public/assets/img/bed-1.jpg" alt="" class="w-full">
-                    <div class="card-text text-white p-3">
-                        <h1 class="wilkysta-font text-3xl">Comfort room with balcony</h1>
-                        <div class="info montserrat-font flex items-center gap-4 text-sm my-2">
-                            <p>2 beds</p>
-                            <i class="bx bxs-circle text-xs text-gray-400"></i>
-                            <p>1 bathroom</p>
-                            <i class="bx bxs-circle text-xs text-gray-400"></i>
-                            <p>balcony</p>
-                        </div>
-                        <a href="#" class="wilkysta-font uppercase text-lg underline decoration-dotted">see details</a>
-                        <hr class="my-2">
-                        <div class="price-btn wilkysta-font flex items-center justify-between">
-                            <p class="uppercase text-2xl">$<span>1200</span>/night</p>
-                            <a href="#"><button class="border border-2 border-white py-2 px-5 uppercase hover:bg-white hover:text-black transition">book Now</button></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- card -->
-                <div class="card bg-secondary-clr">
-                    <img src="<?= BASE_URL?>/public/assets/img/bed-1.jpg" alt="" class="w-full">
-                    <div class="card-text text-white p-3">
-                        <h1 class="wilkysta-font text-3xl">Comfort room with balcony</h1>
-                        <div class="info montserrat-font flex items-center gap-4 text-sm my-2">
-                            <p>2 beds</p>
-                            <i class="bx bxs-circle text-xs text-gray-400"></i>
-                            <p>1 bathroom</p>
-                            <i class="bx bxs-circle text-xs text-gray-400"></i>
-                            <p>balcony</p>
-                        </div>
-                        <a href="#" class="wilkysta-font uppercase text-lg underline decoration-dotted">see details</a>
-                        <hr class="my-2">
-                        <div class="price-btn wilkysta-font flex items-center justify-between">
-                            <p class="uppercase text-2xl">$<span>1200</span>/night</p>
-                            <a href="#"><button class="border border-2 border-white py-2 px-5 uppercase hover:bg-white hover:text-black transition">book Now</button></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- *row -->
-                <!-- card -->
-                <div class="card bg-secondary-clr">
-                    <img src="<?= BASE_URL?>/public/assets/img/bed-1.jpg" alt="" class="w-full">
-                    <div class="card-text text-white p-3">
-                        <h1 class="wilkysta-font text-3xl">Comfort room with balcony</h1>
-                        <div class="info montserrat-font flex items-center gap-4 text-sm my-2">
-                            <p>2 beds</p>
-                            <i class="bx bxs-circle text-xs text-gray-400"></i>
-                            <p>1 bathroom</p>
-                            <i class="bx bxs-circle text-xs text-gray-400"></i>
-                            <p>balcony</p>
-                        </div>
-                        <a href="#" class="wilkysta-font uppercase text-lg underline decoration-dotted">see details</a>
-                        <hr class="my-2">
-                        <div class="price-btn wilkysta-font flex items-center justify-between">
-                            <p class="uppercase text-2xl">$<span>1200</span>/night</p>
-                            <a href="#"><button class="border border-2 border-white py-2 px-5 uppercase hover:bg-white hover:text-black transition">book Now</button></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- card -->
-                <div class="card bg-secondary-clr">
-                    <img src="<?= BASE_URL?>/public/assets/img/bed-1.jpg" alt="" class="w-full">
-                    <div class="card-text text-white p-3">
-                        <h1 class="wilkysta-font text-3xl">Comfort room with balcony</h1>
-                        <div class="info montserrat-font flex items-center gap-4 text-sm my-2">
-                            <p>2 beds</p>
-                            <i class="bx bxs-circle text-xs text-gray-400"></i>
-                            <p>1 bathroom</p>
-                            <i class="bx bxs-circle text-xs text-gray-400"></i>
-                            <p>balcony</p>
-                        </div>
-                        <a href="#" class="wilkysta-font uppercase text-lg underline decoration-dotted">see details</a>
-                        <hr class="my-2">
-                        <div class="price-btn wilkysta-font flex items-center justify-between">
-                            <p class="uppercase text-2xl">$<span>1200</span>/night</p>
-                            <a href="#"><button class="border border-2 border-white py-2 px-5 uppercase hover:bg-white hover:text-black transition">book Now</button></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- card -->
-                <div class="card bg-secondary-clr">
-                    <img src="<?= BASE_URL?>/public/assets/img/bed-1.jpg" alt="" class="w-full">
-                    <div class="card-text text-white p-3">
-                        <h1 class="wilkysta-font text-3xl">Comfort room with balcony</h1>
-                        <div class="info montserrat-font flex items-center gap-4 text-sm my-2">
-                            <p>2 beds</p>
-                            <i class="bx bxs-circle text-xs text-gray-400"></i>
-                            <p>1 bathroom</p>
-                            <i class="bx bxs-circle text-xs text-gray-400"></i>
-                            <p>balcony</p>
-                        </div>
-                        <a href="#" class="wilkysta-font uppercase text-lg underline decoration-dotted">see details</a>
-                        <hr class="my-2">
-                        <div class="price-btn wilkysta-font flex items-center justify-between">
-                            <p class="uppercase text-2xl">$<span>1200</span>/night</p>
-                            <a href="#"><button class="border border-2 border-white py-2 px-5 uppercase hover:bg-white hover:text-black transition">book Now</button></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- *row -->
-                <!-- card -->
-                <div class="card bg-secondary-clr">
-                    <img src="<?= BASE_URL?>/public/assets/img/bed-1.jpg" alt="" class="w-full">
-                    <div class="card-text text-white p-3">
-                        <h1 class="wilkysta-font text-3xl">Comfort room with balcony</h1>
-                        <div class="info montserrat-font flex items-center gap-4 text-sm my-2">
-                            <p>2 beds</p>
-                            <i class="bx bxs-circle text-xs text-gray-400"></i>
-                            <p>1 bathroom</p>
-                            <i class="bx bxs-circle text-xs text-gray-400"></i>
-                            <p>balcony</p>
-                        </div>
-                        <a href="#" class="wilkysta-font uppercase text-lg underline decoration-dotted">see details</a>
-                        <hr class="my-2">
-                        <div class="price-btn wilkysta-font flex items-center justify-between">
-                            <p class="uppercase text-2xl">$<span>1200</span>/night</p>
-                            <a href="#"><button class="border border-2 border-white py-2 px-5 uppercase hover:bg-white hover:text-black transition">book Now</button></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- card -->
-                <div class="card bg-secondary-clr">
-                    <img src="<?= BASE_URL?>/public/assets/img/bed-1.jpg" alt="" class="w-full">
-                    <div class="card-text text-white p-3">
-                        <h1 class="wilkysta-font text-3xl">Comfort room with balcony</h1>
-                        <div class="info montserrat-font flex items-center gap-4 text-sm my-2">
-                            <p>2 beds</p>
-                            <i class="bx bxs-circle text-xs text-gray-400"></i>
-                            <p>1 bathroom</p>
-                            <i class="bx bxs-circle text-xs text-gray-400"></i>
-                            <p>balcony</p>
-                        </div>
-                        <a href="#" class="wilkysta-font uppercase text-lg underline decoration-dotted">see details</a>
-                        <hr class="my-2">
-                        <div class="price-btn wilkysta-font flex items-center justify-between">
-                            <p class="uppercase text-2xl">$<span>1200</span>/night</p>
-                            <a href="#"><button class="border border-2 border-white py-2 px-5 uppercase hover:bg-white hover:text-black transition">book Now</button></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- card -->
-                <div class="card bg-secondary-clr">
-                    <img src="<?= BASE_URL?>/public/assets/img/bed-1.jpg" alt="" class="w-full">
-                    <div class="card-text text-white p-3">
-                        <h1 class="wilkysta-font text-3xl">Comfort room with balcony</h1>
-                        <div class="info montserrat-font flex items-center gap-4 text-sm my-2">
-                            <p>2 beds</p>
-                            <i class="bx bxs-circle text-xs text-gray-400"></i>
-                            <p>1 bathroom</p>
-                            <i class="bx bxs-circle text-xs text-gray-400"></i>
-                            <p>balcony</p>
-                        </div>
-                        <a href="#" class="wilkysta-font uppercase text-lg underline decoration-dotted">see details</a>
-                        <hr class="my-2">
-                        <div class="price-btn wilkysta-font flex items-center justify-between">
-                            <p class="uppercase text-2xl">$<span>1200</span>/night</p>
-                            <a href="#"><button class="border border-2 border-white py-2 px-5 uppercase hover:bg-white hover:text-black transition">book Now</button></a>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                    }
+                }?>
             </div>
         </div>
     </div>

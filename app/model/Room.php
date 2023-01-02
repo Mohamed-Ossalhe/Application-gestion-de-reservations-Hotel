@@ -84,12 +84,19 @@
         // ! search data
         public function searchData($data) {
             try {
-                $stmt = $this->connect()->prepare("SELECT * FROM `rooms` WHERE room_type = :room_type AND capacity = :capacity");
-                $stmt->bindParam("room_type", $data["room_type"]);
-                // $stmt->bindParam("suite_type", $data["suite_type"]);
-                $stmt->bindParam("capacity", $data["capacity"]);
-                if($stmt->execute()) {
-                    return $stmt->fetchAll();
+                if($data) {
+                    $stmt = $this->connect()->prepare("SELECT * FROM `rooms` WHERE room_type = :room_type AND suite_type = :suite_type");
+                    $stmt->bindParam("room_type", $data["room_type"]);
+                    $stmt->bindParam("suite_type", $data["suite_type"]);
+                    // $stmt->bindParam("capacity", $data["capacity"]);
+                    if($stmt->execute()) {
+                        return $stmt->fetchAll();
+                    }
+                }else {
+                    $stmt = $this->connect()->prepare("SELECT * FROM `rooms`");
+                    if($stmt->execute()) {
+                        return $stmt->fetchAll();
+                    }
                 }
             }catch(PDOException $e) {
                 return $e->getMessage();

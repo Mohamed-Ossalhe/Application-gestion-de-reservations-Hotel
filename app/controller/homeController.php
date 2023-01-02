@@ -23,8 +23,10 @@ class homeController extends Controller {
 
     // search rooms
     public function searchRoom() {
+        $this->model("Room");
+        $data = array();
         if(isset($_POST["search"])) {
-            if(!empty($_POST["room_type"]) && !empty($_POST["capacity"])) {
+            if(!empty($_POST["room_type"]) && !empty($_POST["suite_type"])) {
                 $data = array();
                 if(!empty($_POST["suite_type"])) {
                     $data = array(
@@ -38,10 +40,12 @@ class homeController extends Controller {
                         "capacity" => $_POST["capacity"]
                     );
                 }
-                $this->model("Room");
                 $rooms = $this->model->searchData($data);
                 return $rooms;
             }
+        }else {
+            $rooms = $this->model->searchData($data);
+            return $rooms;
         }
     }
 }

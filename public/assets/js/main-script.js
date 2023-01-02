@@ -92,22 +92,22 @@ $(document).ready(function() {
 
 
     // ! search rooms
-    // $("#searchBtn").click(function (){
-    //     let roomTypeValue = $("#room-type").val();
-    //     let suiteTypeValue = $("#suite-type").val();
-    //     if(roomTypeValue && suiteTypeValue) {
-    //         $.ajax({
-    //             url: 'http://localhost/Application-gestion-de-reservations-Hotel/public/home/searchRoom',
-    //             method: 'POST',
-    //             data: {roomTypeValue:roomTypeValue, suiteTypeValue:suiteTypeValue},
-    //             success:function(data){
-    //                 $(".rooms-section").html(data);
-    //             }
-    //         })
-    //     }else {
-    //         $(".rooms-section").css("display", "none");
-    //     }
-    // })
+    $("#searchBtn").click(function (){
+        let roomTypeValue = $("#room-type").val();
+        let suiteTypeValue = $("#suite-type").val();
+        if(roomTypeValue && suiteTypeValue) {
+            $.ajax({
+                url: 'http://localhost/Application-gestion-de-reservations-Hotel/public/home/searchRoom',
+                method: 'POST',
+                data: {roomTypeValue:roomTypeValue, suiteTypeValue:suiteTypeValue},
+                success:function(data){
+                    $(".rooms-section").html(data);
+                }
+            })
+        }else {
+            $(".rooms-section").css("display", "none");
+        }
+    })
 });
 
 // ! Dynamic Form using Vanilla Js

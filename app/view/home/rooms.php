@@ -47,11 +47,12 @@
                         <div class="input-field">
                             <label for="room-number" class="montserrat-font">Guest</label>
                             <select id="room-number" name="capacity" class="text-main-clr w-full md:w-auto text-sm block p-2.5 mt-2 montserrat-font">
-                                <option value="1">1 Adult</option>
-                                <option value="2">2 Adults</option>
-                                <option value="3">1 Adult, 1 Child</option>
-                                <option value="4">2 Adults, 2 Childs</option>
-                                <option value="4">2 Adults, 3 Childs</option>
+                                <option value="1">1 Guest</option>
+                                <option value="2">2 Guests</option>
+                                <option value="3">3 Guests</option>
+                                <option value="4">4 Guests</option>
+                                <option value="5">5 Guests</option>
+                                <option value="6">6 Guests</option>
                             </select>
                         </div>
                         <input type="submit" name="search" id="searchBtn" value="SEARCH" class="uppercase cursor-pointer mt-8 py-2 px-5 bg-black text-white border border-2 border-black wilkysta-font hover:bg-white hover:text-black transition">
@@ -68,27 +69,27 @@
             <div class="rooms-section grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-7 gap-x-10 gap-y-12">
                 <!-- *row -->
                 <?php
-                $rooms = $this->view_data["rooms"];
+                $searchedrooms = $this->view_data["rooms"];
                 // var_dump($rooms);
-                if($rooms > 0) {
-                    foreach($rooms as $room) {
+                if($searchedrooms > 0) {
+                    foreach($searchedrooms as $searchedRoom) {
                 ?>
                 <!-- card -->
                 <div class="card bg-secondary-clr">
-                    <img src="<?= BASE_URL?>/public/assets/img/rooms/<?=$room["room_image"]?>" alt="" class="w-full">
+                    <img src="<?= BASE_URL?>/public/assets/img/rooms/<?=$searchedRoom["room_image"]?>" alt="" class="w-full">
                     <div class="card-text text-white p-3">
-                        <h1 class="wilkysta-font text-3xl"><?=$room["room_heading"]?></h1>
+                        <h1 class="wilkysta-font text-3xl"><?=$searchedRoom["room_heading"]?></h1>
                         <div class="info montserrat-font flex items-center gap-4 text-sm my-2">
-                            <p>Capacity: <?=$room["capacity"]?></p>
+                            <p>Capacity: <?=$searchedRoom["capacity"]?></p>
                             <i class="bx bxs-circle text-xs text-gray-400"></i>
-                            <p>Room Type: <?=$room["room_type"]?></p>
+                            <p>Room Type: <?=$searchedRoom["room_type"]?></p>
                             <i class="bx bxs-circle text-xs text-gray-400"></i>
-                            <p><?php echo ($room["suite_type"]) ? "Suite Type: ".$room["suite_type"] : ""?></p>
+                            <p><?php echo ($searchedRoom["suite_type"]) ? "Suite Type: ".$searchedRoom["suite_type"] : ""?></p>
                         </div>
                         <a href="#" class="wilkysta-font uppercase text-lg underline decoration-dotted">see details</a>
                         <hr class="my-2">
                         <div class="price-btn wilkysta-font flex items-center justify-between">
-                            <p class="uppercase text-2xl">$<span><?=$room["room_price"]?></span>/night</p>
+                            <p class="uppercase text-2xl">$<span><?=$searchedRoom["room_price"]?></span>/night</p>
                             <a href="#"><button class="border border-2 border-white py-2 px-5 uppercase hover:bg-white hover:text-black transition">book Now</button></a>
                         </div>
                     </div>

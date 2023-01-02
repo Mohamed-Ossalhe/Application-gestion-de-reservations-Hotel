@@ -68,6 +68,15 @@
                 header("Location: http://localhost/Application-gestion-de-reservations-Hotel/public/home/");
             }
         }
+        // ! book room
+        public function bookRoom($id) {
+            if(!isset($_SESSION["logged"]) && $_SESSION["logged"] !== true){
+                header("Location: http://localhost/Application-gestion-de-reservations-Hotel/public/home/log_in");
+            }else {
+                $this->model("Room");
+                $roomChoosed = $this->model->getDataRow($id);
+            }
+        }
         // validate inputs and remove special characters
         public function validateData($data) {
             if(isset($data) and !empty($data)) {

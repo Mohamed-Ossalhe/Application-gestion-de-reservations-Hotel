@@ -9,7 +9,7 @@
             <div class="hero-search-image relative mt-3">
                 <!-- search form -->
                 <div class="search bg-white w-4/5 mx-auto py-4 px-3 md:translate-y-12 drop-shadow-xl">
-                    <form action="#" class="flex items-left flex-col md:items-center md:flex-row justify-between md:gap-3">
+                    <form class="flex items-left flex-col md:items-center md:flex-row justify-between md:gap-3" action="../home/rooms" method="POST">
                         <!-- room type -->
                         <div class="input-field mb-4 md:mb-0">
                             <label for="room-type" class="montserrat-font">Room Type</label>
@@ -22,14 +22,14 @@
                         <!-- suite-type -->
                         <div class="input-field suite-type mb-4 md:mb-0">
                             <label for="suite-type" class=" montserrat-font">Suite Type</label>
-                            <select id="suite-type" name="suite-type" class="text-main-clr w-full md:w-auto text-sm block p-2.5 mt-2  montserrat-font">
-                                <option value="1">Standard suite room</option>
-                                <option value="2">Junior Suite</option>
-                                <option value="3">Presidential suite</option>
-                                <option value="4"> Penthouse suites</option>
-                                <option value="4">Honeymoon suite</option>
-                                <option value="4">Honeymoon suite</option>
-                                <option value="4">Bridal suite</option>
+                            <select id="suite-type" name="suite_type" class="text-main-clr w-full md:w-auto text-sm block p-2.5 mt-2  montserrat-font">
+                                <option>SELECT</option>
+                                <option value="Standard">Standard suite room</option>
+                                <option value="Junior">Junior Suite</option>
+                                <option value="Presidential">Presidential suite</option>
+                                <option value="Presidential"> Penthouse suites</option>
+                                <option value="Honeymoon">Honeymoon suite</option>
+                                <option value="Bridal">Bridal suite</option>
                             </select>
                         </div>
                         <!-- date picker -->
@@ -47,15 +47,16 @@
                         <!-- room number -->
                         <div class="input-field">
                             <label for="room-number" class="montserrat-font">Guest</label>
-                            <select id="room-number" name="guest" class="text-main-clr w-full md:w-auto text-sm block p-2.5 mt-2  montserrat-font">
-                                <option value="1">1 Adult</option>
-                                <option value="2">2 Adults</option>
-                                <option value="3">1 Adult, 1 Child</option>
-                                <option value="4">2 Adults, 2 Childs</option>
-                                <option value="4">2 Adults, 3 Childs</option>
+                            <select id="room-number" name="capacity" class="text-main-clr w-full md:w-auto text-sm block p-2.5 mt-2 montserrat-font">
+                                <option value="1">1 Guest</option>
+                                <option value="2">2 Guests</option>
+                                <option value="3">3 Guests</option>
+                                <option value="4">4 Guests</option>
+                                <option value="5">5 Guests</option>
+                                <option value="6">6 Guests</option>
                             </select>
                         </div>
-                        <input type="submit" value="SEARCH" class="uppercase cursor-pointer mt-8 py-2 px-5 bg-black text-white border border-2 border-black wilkysta-font hover:bg-white hover:text-black transition">
+                        <input type="submit" name="search" id="searchBtn" value="SEARCH" class="uppercase cursor-pointer mt-8 py-2 px-5 bg-black text-white border border-2 border-black wilkysta-font hover:bg-white hover:text-black transition">
                     </form>
                 </div>
                 <div class="image mx-7 hidden md:block">

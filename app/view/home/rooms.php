@@ -90,7 +90,7 @@
                         <hr class="my-2">
                         <div class="price-btn wilkysta-font flex items-center justify-between">
                             <p class="uppercase text-2xl">$<span><?=$searchedRoom["room_price"]?></span>/night</p>
-                            <a href="#"><button class="border border-2 border-white py-2 px-5 uppercase hover:bg-white hover:text-black transition">book Now</button></a>
+                            <a href="<?= (isset($_SESSION["logged"]) && $_SESSION["logged"] === true) ? "../home/bookRoom/".$searchedRoom["room_id"] : "../home/log_in" ?>"><button class="border border-2 border-white py-2 px-5 uppercase hover:bg-white hover:text-black transition">book Now</button></a>
                         </div>
                     </div>
                 </div>

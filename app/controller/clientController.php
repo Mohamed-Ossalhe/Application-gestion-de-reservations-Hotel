@@ -46,6 +46,7 @@
                         if($data["email"] === $client["email"] && password_verify($data["password"], $client["password"])) {
                             $_SESSION["username"] = $client["first_name"] . ' ' . $client["last_name"];
                             $_SESSION["email"] = $client["email"];
+                            $_SESSION["user_id"] = $client["client_id"];
                             $_SESSION["logged"] = true;
                             header("Location: http://localhost/Application-gestion-de-reservations-Hotel/public/home/");
                         }else {

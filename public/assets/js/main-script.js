@@ -8,14 +8,11 @@ $(document).ready(function() {
         }
     })
     // ! Dynamic Form using jQuery
-    $(".suite-type").hide();
-    $("#room-type").change(function(){
-        if(this.value === "suite") {
-            $(".suite-type").fadeIn("fast");
-        }else {
-            $(".suite-type").fadeOut("fast");
-        }
-    });
+    let suiteTypeDiv = $(".suite-type");
+    let suiteType = $("#suite-type");
+    let roomType = $("#room-type");
+    suiteTypeDiv.hide();
+
     // ! Show Hide Password
     $(".hide").click(function() {
         $(this).toggleClass("bx-show");

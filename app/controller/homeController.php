@@ -12,6 +12,10 @@ class homeController extends Controller {
         $this->view("home/rooms", ["rooms"=>$this->searchRoom()]);
         $this->view->render();
     }
+    public function bookRoom($id) {
+        $this->view('home/book-room');
+        $this->view->render();
+    }
     public function log_in($error = "") {
         $this->view("home/log-in", ["error" => $error]);
         $this->view->render();

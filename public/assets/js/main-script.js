@@ -12,6 +12,20 @@ $(document).ready(function() {
     let suiteType = $("#suite-type");
     let roomType = $("#room-type");
     suiteTypeDiv.hide();
+    suiteType.attr("disabled", "disabled");
+    if(roomType.val() === "suite") {
+        suiteTypeDiv.show();
+        suiteType.removeAttr("disabled");
+    }
+    roomType.change(function(){
+        if(roomType.val() === "suite") {
+            suiteTypeDiv.show();
+            suiteType.removeAttr("disabled");
+        }else {
+            suiteTypeDiv.hide();
+            suiteType.attr("disabled", "disabled");
+        }
+    });
 
     // ! Show Hide Password
     $(".hide").click(function() {

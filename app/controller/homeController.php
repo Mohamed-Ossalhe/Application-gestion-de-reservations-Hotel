@@ -28,29 +28,21 @@ class homeController extends Controller {
     // search rooms
     public function searchRoom() {
         $this->model("Room");
-        $data = array();
         if(isset($_POST["search"])) {
-            if(!empty($_POST["room_type"]) && !empty($_POST["suite_type"])) {
-                $data = array();
-                if(!empty($_POST["suite_type"])) {
-                    $data = array(
-                        "room_type" => $_POST["room_type"],
-                        "suite_type" => $_POST["suite_type"],
-                        "capacity" => $_POST["capacity"]
-                    );
-                }else {
-                    $data = array(
-                        "room_type" => $_POST["room_type"],
-                        "capacity" => $_POST["capacity"]
-                    );
-                }
-                $rooms = $this->model->searchData($data);
-                return $rooms;
+            if(!empty($_POST["room_type"])) {
+                $data = array(
+                    "room_type" => $_POST["room_type"],
+                    "suite_type" => $_POST["suite_type"],
+                );
+                // $rooms = $this->model->searchData($data);
+                // return $rooms;
+                var_dump($data);
             }
-        }else {
-            $rooms = $this->model->searchData($data);
-            return $rooms;
-        }
+        }//else {
+        //     $rooms = $this->model->searchData($data);
+        //     return $rooms;
+        //     var_dump($data);
+        // }
     }
 }
 ?>

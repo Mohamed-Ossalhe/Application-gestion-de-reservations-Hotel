@@ -13,9 +13,14 @@ $(document).ready(function() {
     let roomType = $("#room-type");
     suiteTypeDiv.hide();
     suiteType.attr("disabled", "disabled");
+    suiteType.val('');
     if(roomType.val() === "suite") {
         suiteTypeDiv.show();
         suiteType.removeAttr("disabled");
+    }else {
+        suiteTypeDiv.hide();
+        suiteType.attr("disabled", "disabled");
+        suiteType.val('');
     }
     roomType.change(function(){
         if(roomType.val() === "suite") {
@@ -24,6 +29,7 @@ $(document).ready(function() {
         }else {
             suiteTypeDiv.hide();
             suiteType.attr("disabled", "disabled");
+            suiteType.val('');
         }
     });
 
@@ -103,21 +109,35 @@ $(document).ready(function() {
 
 
     // ! search rooms
-    $("#searchBtn").click(function (){
-        let roomTypeValue = $("#room-type").val();
-        let suiteTypeValue = $("#suite-type").val();
-        if(roomTypeValue && suiteTypeValue) {
-            $.ajax({
-                url: 'http://localhost/Application-gestion-de-reservations-Hotel/public/home/searchRoom',
-                method: 'POST',
-                data: {roomTypeValue:roomTypeValue, suiteTypeValue:suiteTypeValue},
-                success:function(data){
-                    $(".rooms-section").html(data);
-                }
-            })
-        }else {
-            $(".rooms-section").css("display", "none");
-        }
+    $("#search-form").on('submit', function($e){
+        $e.preventDefault();
+        let roomTypeValue = roomType.val();
+        let suiteTypeValue = suiteType.val();
+        // alert(roomTypeValue + suiteTypeValue);
+        // if(roomTypeValue !== '') {
+        //     if(suiteTypeValue !== ''){
+        //         $.post('http://localhost/Application-gestion-de-reservations-Hotel/public/home/searchRoom', {room_type:roomTypeValue,suite_type:suiteTypeValue}, function(data){
+        //             // $('.rooms-wrapper').html(data);
+        //             $('.rooms-wrapper').html(data);
+        //         });
+        //     }else {
+        //         $.post('http://localhost/Application-gestion-de-reservations-Hotel/public/home/searchRoom', {room_type:roomTypeValue}, function(data){
+        //             $('.rooms-wrapper').html(data);
+        //         });
+        //     }
+        // }
+        $.ajax({
+            url: 'http://localhost/Application-gestion-de-reservations-Hotel/public/home/searchRoom',
+            type: 'post',
+            data: {
+                room_type: roomTypeValue,
+                suite_type: suiteTypeValue
+            },
+            success: function(data, status){
+                $('.rooms-wrapper').html(data);
+                console.log(status);
+            }
+        })
     })
 });
 

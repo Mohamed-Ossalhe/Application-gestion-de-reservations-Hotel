@@ -9,7 +9,7 @@
             <div class="hero-search-image relative mt-3">
                 <!-- search form -->
                 <div class="search bg-white w-4/5 mx-auto py-4 px-3 md:translate-y-12 drop-shadow-xl">
-                    <form class="flex items-left flex-col md:items-center md:flex-row justify-between md:gap-3" action="../home/rooms" method="POST">
+                    <form id="search-form" class="flex items-left flex-col md:items-center md:flex-row justify-between md:gap-3" action="../home/rooms" method="POST">
                         <!-- room type -->
                         <div class="input-field mb-4 md:mb-0">
                             <label for="room-type" class="montserrat-font">Room Type</label>
@@ -23,7 +23,7 @@
                         <div class="input-field suite-type mb-4 md:mb-0">
                             <label for="suite-type" class=" montserrat-font">Suite Type</label>
                             <select id="suite-type" name="suite_type" class="text-main-clr w-full md:w-auto text-sm block p-2.5 mt-2  montserrat-font">
-                                <option>SELECT</option>
+                                <option value="">SELECT</option>
                                 <option value="Standard">Standard suite room</option>
                                 <option value="Junior">Junior Suite</option>
                                 <option value="Presidential">Presidential suite</option>

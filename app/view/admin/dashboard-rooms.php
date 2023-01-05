@@ -30,9 +30,13 @@
                             <?=$room["room_description"]?>
                         </p>
                         <ul class="flex items-center gap-8 text-secondary-clr">
-                            <li>2 beds</li>
-                            <li>1 bathroom</li>
-                            <li>balcony</li>
+                            <li>Room Type: <?=$room["room_type"]?></li>
+                            <?php if($room["suite_type"] !== null):?>
+                                <li>Suite Type: <?=$room["suite_type"]?></li>
+                            <?php else:?>
+                                <li></li>
+                            <?php endif;?>
+                            <li>Capacity: <?=$room["capacity"]?></li>
                         </ul>
                     </div>
                 </div>

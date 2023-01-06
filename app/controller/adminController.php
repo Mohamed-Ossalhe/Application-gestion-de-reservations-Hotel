@@ -1,5 +1,4 @@
 <?php
-    session_start();
     class adminController extends Controller {
         // ! loading views
         public function index() {

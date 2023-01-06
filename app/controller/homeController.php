@@ -47,12 +47,12 @@ class homeController extends Controller {
             $rooms = $this->model->searchData($data);
             // $result = json_encode($rooms);
             foreach($rooms as $room) {
-                $bookBtn = "../home/log_in";
+                $bookBtn = '';
                 $suiteType = '';
-                if(isset($_SESSION["logged"]) && $_SESSION["logged"] === true) {
-                    $bookBtn = "../home/bookRoom/";
-                }else {
+                if(!isset($_SESSION["logged"]) and $_SESSION["logged"] !== true) {
                     $bookBtn = "../home/log_in";
+                }else {
+                    $bookBtn = "../home/bookRoom/" . $room["room_id"];
                 }
                 if($room['suite_type'] !== null) {
                     $suiteType = "Suite Type: ".$room['suite_type'];
@@ -74,7 +74,7 @@ class homeController extends Controller {
                     <hr class="my-2">
                     <div class="price-btn wilkysta-font flex items-center justify-between">
                         <p class="uppercase text-2xl">$<span>'.$room["room_price"].'</span>/night</p>
-                        <a href="'. $bookBtn . $room["room_id"] .'"><button class="border border-2 border-white py-2 px-5 uppercase hover:bg-white hover:text-black transition">book Now</button></a>
+                        <a href="'. $bookBtn .'"><button class="border border-2 border-white py-2 px-5 uppercase hover:bg-white hover:text-black transition">book Now</button></a>
                     </div>
                 </div>
             </div>';

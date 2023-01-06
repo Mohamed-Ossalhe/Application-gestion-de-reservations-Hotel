@@ -1,5 +1,4 @@
 <?php
-    session_start();
     class clientController extends Controller {
         // index page = login page
         public function index($error = "") {

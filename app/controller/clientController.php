@@ -47,7 +47,7 @@
                             $_SESSION["email"] = $client["email"];
                             $_SESSION["user_id"] = $client["client_id"];
                             $_SESSION["logged"] = true;
-                            header("Location: http://localhost/Application-gestion-de-reservations-Hotel/public/home/");
+                            header("Location: http://localhost/Application-gestion-de-reservations-Hotel/public/home/rooms");
                         }else {
                             $this->view("home/log-in", ["error" => "Uncorrect Email Or Password"]);
                             $this->view->render();

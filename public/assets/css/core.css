@@ -4,11 +4,11 @@
 @tailwind utilities;
 @font-face {
   font-family: "Wilkysta";
-  src: url("Wilkysta.ttf");
+  src: url("../fonts/Wilkysta.ttf");
 }
 @font-face {
   font-family: "Montserrat";
-  src: url("Montserrat-Regular.ttf");
+  src: url("../fonts/Montserrat-Regular.ttf");
 }
 .wilkysta-font {
   font-family: "Wilkysta";

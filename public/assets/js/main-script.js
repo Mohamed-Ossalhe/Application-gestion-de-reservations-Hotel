@@ -121,43 +121,48 @@ $(document).ready(function() {
                 suite_type: suiteTypeValue
             },
             success: function(data, status){
-                const dataParsed = JSON.parse(data);
-                let rooms = [];
-                let roomCard = ``;
-                let dataSuiteType = '';
-                let bookBtn = '';
-                for(let room of dataParsed) {
-                    if(room.suite_type !== null) {
-                        dataSuiteType = "Suite Type: " + room.suite_type;
-                    }else {
-                        dataSuiteType = '';
-                    }
-                    roomCard = `
-                    <div class="card bg-secondary-clr">
-                        <img src="http://localhost/Application-gestion-de-reservations-Hotel/public/assets/img/rooms/${room.room_image}" alt="" class="w-full">
-                        <div class="card-text text-white p-3">
-                            <h1 class="wilkysta-font text-3xl">${room.room_heading}</h1>
-                            <div class="info montserrat-font flex items-center gap-4 text-sm my-2">
-                                <p>Capacity: ${room.capacity}</p>
-                                <i class="bx bxs-circle text-xs text-gray-400"></i>
-                                <p>Room Type: ${room.room_type}</p>
-                                <i class="bx bxs-circle text-xs text-gray-400"></i>
-                                <p>${dataSuiteType}</p>
-                            </div>
-                            <a href="#" class="wilkysta-font uppercase text-lg underline decoration-dotted">see details</a>
-                            <hr class="my-2">
-                            <div class="price-btn wilkysta-font flex items-center justify-between">
-                                <p class="uppercase text-2xl">$<span>${room.room_price}</span>/night</p>
-                                <a href="../home/bookRoom/${room.room_id}"><button class="border border-2 border-white py-2 px-5 uppercase hover:bg-white hover:text-black transition">book Now</button></a>
+                if(data) {
+                    const dataParsed = JSON.parse(data);
+                    let rooms = [];
+                    let roomCard = ``;
+                    let dataSuiteType = '';
+                    let bookBtn = '';
+                    for(let room of dataParsed) {
+                        if(room.suite_type !== null) {
+                            dataSuiteType = "Suite Type: " + room.suite_type;
+                        }else {
+                            dataSuiteType = '';
+                        }
+                        roomCard = `
+                        <div class="card bg-secondary-clr">
+                            <img src="http://localhost/Application-gestion-de-reservations-Hotel/public/assets/img/rooms/${room.room_image}" alt="" class="w-full">
+                            <div class="card-text text-white p-3">
+                                <h1 class="wilkysta-font text-3xl">${room.room_heading}</h1>
+                                <div class="info montserrat-font flex items-center gap-4 text-sm my-2">
+                                    <p>Capacity: ${room.capacity}</p>
+                                    <i class="bx bxs-circle text-xs text-gray-400"></i>
+                                    <p>Room Type: ${room.room_type}</p>
+                                    <i class="bx bxs-circle text-xs text-gray-400"></i>
+                                    <p>${dataSuiteType}</p>
+                                </div>
+                                <a href="#" class="wilkysta-font uppercase text-lg underline decoration-dotted">see details</a>
+                                <hr class="my-2">
+                                <div class="price-btn wilkysta-font flex items-center justify-between">
+                                    <p class="uppercase text-2xl">$<span>${room.room_price}</span>/night</p>
+                                    <a href="../home/bookRoom/${room.room_id}"><button class="border border-2 border-white py-2 px-5 uppercase hover:bg-white hover:text-black transition">book Now</button></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    `;
-                    rooms.push(roomCard);
-                }
-                for(let room in rooms) {
-                    $('.rooms-wrapper').html(rooms[room]);
-                    console.log(room);
+                        `;
+                        rooms.push(roomCard);
+                    }
+                    for(let room in rooms) {
+                        console.log(JSON.parse(data));
+                        $('.rooms-wrapper').html(rooms[room]);
+                        console.log(rooms);
+                    }
+                }else {
+                    $('.rooms-wrapper').html('<p>No Rooms Available</p>');
                 }
                 return
                 console.log(status);

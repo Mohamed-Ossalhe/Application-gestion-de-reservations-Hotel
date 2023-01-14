@@ -24,7 +24,7 @@
                             <label for="suite-type" class=" montserrat-font">Suite Type</label>
                             <select id="suite-type" name="suite_type" class="text-main-clr w-full md:w-auto text-sm block p-2.5 mt-2  montserrat-font">
                                 <option value="">SELECT</option>
-                                <option value="Standard">Standard suite room</option>
+                                <option value="Standard">Standard suite</option>
                                 <option value="Junior">Junior Suite</option>
                                 <option value="Presidential">Presidential suite</option>
                                 <option value="Presidential"> Penthouse suites</option>

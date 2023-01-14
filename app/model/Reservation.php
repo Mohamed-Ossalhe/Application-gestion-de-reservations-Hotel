@@ -1,6 +1,6 @@
 <?php
     class Reservation extends DB {
-        public function bookRoom($data) {
+        public function book_room($data) {
             try {
                 $stmt = $this->connect()->prepare("INSERT INTO `reservations` (check_in_date,check_out_date,room_id,client_id,guests_count,total_price)VALUES(:check_in, :check_out, :room_id, :client_id, :guests_count, :total_price)");
                 $stmt->bindParam("check_in", $data["check_in"]);

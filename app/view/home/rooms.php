@@ -8,11 +8,11 @@
             <div class="hero-search mt-2">
                 <!-- search form -->
                 <div class="search bg-white w-4/5 mx-auto py-4 px-3 md:translate-y-12 drop-shadow-xl">
-                    <form id="search-form" class="flex items-left flex-col md:items-center md:flex-row justify-between md:gap-3" method="POST">
+                    <form onsubmit="submitSearch(event)" id="search-form" class="flex items-left flex-col md:items-center md:flex-row justify-between md:gap-3" method="POST">
                         <!-- room type -->
                         <div class="input-field mb-4 md:mb-0">
                             <label for="room-type" class="montserrat-font">Room Type</label>
-                            <select id="room-type" name="room_type" class="text-main-clr w-full md:w-auto text-sm block p-2.5 mt-2 montserrat-font">
+                            <select id="room-type" name="room_type" class="text-main-clr w-full md:w-auto text-sm block p-2.5 mt-2 montserrat-font" required>
                                 <option value="single-bed">Single Bed</option>
                                 <option value="double-bed">Double Bed</option>
                                 <option value="suite">Suite</option>
@@ -23,10 +23,10 @@
                             <label for="suite-type" class=" montserrat-font">Suite Type</label>
                             <select id="suite-type" name="suite_type" class="text-main-clr w-full md:w-auto text-sm block p-2.5 mt-2  montserrat-font">
                                 <option value="">SELECT</option>
-                                <option value="Standard">Standard suite room</option>
+                                <option value="Standard">Standard suite</option>
                                 <option value="Junior">Junior Suite</option>
                                 <option value="Presidential">Presidential suite</option>
-                                <option value="Presidential"> Penthouse suites</option>
+                                <option value="Penthouse"> Penthouse suites</option>
                                 <option value="Honeymoon">Honeymoon suite</option>
                                 <option value="Bridal">Bridal suite</option>
                             </select>
@@ -35,12 +35,12 @@
                         <div date-rangepicker class="flex items-left flex-col md:items-center md:flex-row mb-4 md:mb-0">
                             <div class="relative">
                                 <label for="start_date" class=" montserrat-font">Check in</label>
-                                <input name="start_date" type="text" class="montserrat-font mt-2 text-main-clr text-sm block w-full p-2.5" placeholder="SELECT START DATE">
+                                <input id="check_in_date" name="start_date" type="text" class="montserrat-font mt-2 text-main-clr text-sm block w-full p-2.5" placeholder="SELECT START DATE" required>
                             </div>
                             <span class="mx-3 mt-7 text-gray-500 hidden md:block"><i class='bx bxs-right-arrow-alt'></i></span>
                             <div class="relative">
                                 <label for="end_date" class=" montserrat-font">Check out</label>
-                                <input name="end_date" type="text" class="montserrat-font mt-2 text-main-clr text-sm block w-full p-2.5" placeholder="DELECT END DATE">
+                                <input id="check_out_date" name="end_date" type="text" class="montserrat-font mt-2 text-main-clr text-sm block w-full p-2.5" placeholder="DELECT END DATE" required>
                             </div>
                         </div>
                         <!-- room number -->
@@ -68,7 +68,7 @@
     <!-- ! end hero -->
     <!-- ! start room section -->
     <div class="rooms-section mt-20">
-        <div class="container mx-auto">
+        <div class="container mx-auto rooms-available">
             <!-- ? use grid here -->
             <div class="rooms-wrapper grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-7 gap-x-10 gap-y-12">
                 <!-- *row -->

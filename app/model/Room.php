@@ -86,24 +86,26 @@
             try {
                 if($data) {
                     if($data["suite_type"]) {
-                        $stmt = $this->connect()->prepare("SELECT * FROM `rooms` WHERE room_type = :room_type AND suite_type = :suite_type");
+                        $stmt = $this->connect()->prepare("SELECT `rooms`.* FROM `rooms` LEFT JOIN `reservations` ON `reservations`.`room_id` = `rooms`.`room_id` AND (:check_in NOT BETWEEN `reservations`.`check_in_date` AND `reservations`.`check_out_date` OR :check_out NOT BETWEEN `reservations`.`check_in_date` AND `reservations`.`check_out_date`) WHERE `rooms`.`room_type` = :room_type AND `rooms`.`suite_type` = :suite_type AND `reservations`.`room_id` IS NULL");
                         $stmt->bindParam("room_type", $data["room_type"]);
                         $stmt->bindParam("suite_type", $data["suite_type"]);
+                        $stmt->bindParam("check_in", $data["check_in"]);
+                        $stmt->bindParam("check_out", $data["check_out"]);
                     }else {
-                        $stmt = $this->connect()->prepare("SELECT * FROM `rooms` WHERE room_type = :room_type");
+                        $stmt = $this->connect()->prepare("SELECT `rooms`.* FROM `rooms` LEFT JOIN `reservations` ON `reservations`.`room_id` = `rooms`.`room_id` AND (:check_in NOT BETWEEN `reservations`.`check_in_date` AND `reservations`.`check_out_date` OR :check_out NOT BETWEEN `reservations`.`check_in_date` AND `reservations`.`check_out_date`) WHERE `reservations`.`room_id` IS NULL AND `rooms`.`room_type` = :room_type");
                         $stmt->bindParam("room_type", $data["room_type"]);
-                        // $stmt->bindParam("suite_type", $data["suite_type"]);
+                        $stmt->bindParam("check_in", $data["check_in"]);
+                        $stmt->bindParam("check_out", $data["check_out"]);
                     }
-                    // $stmt->bindParam("capacity", $data["capacity"]);
                     if($stmt->execute()) {
                         return $stmt->fetchAll();
                     }
-                }else {
-                    $stmt = $this->connect()->prepare("SELECT * FROM `rooms`");
-                    if($stmt->execute()) {
-                        return $stmt->fetchAll();
-                    }
-                }
+                }// else {
+                //     $stmt = $this->connect()->prepare("SELECT * FROM `rooms`");
+                //     if($stmt->execute()) {
+                //         return $stmt->fetchAll();
+                //     }
+                // }
             }catch(PDOException $e) {
                 return $e->getMessage();
             }

@@ -46,6 +46,7 @@
                             $_SESSION["username"] = $client["first_name"] . ' ' . $client["last_name"];
                             $_SESSION["email"] = $client["email"];
                             $_SESSION["user_id"] = $client["client_id"];
+                            $_SESSION["phone_number"] = $client["phone_number"];
                             $_SESSION["logged"] = true;
                             header("Location: http://localhost/Application-gestion-de-reservations-Hotel/public/home/rooms");
                         }else {
@@ -75,6 +76,18 @@
             }else {
                 $this->model("Room");
                 $roomChoosed = $this->model->getDataRow($id);
+                // check_in_date	check_out_date	room_id	client_id	guests_count	total_price
+                $data = array(
+                    "check_in" => '23/12/2022',
+                    "check_out" => '25/12/2022',
+                    "room_id" => $roomChoosed["room_id"],
+                    "client_id" => $_SESSION["user_id"],
+                    "guests_count" => 6,
+                    "total_price" => 300
+                );
+                $this->model('Reservation');
+                $this->model->book_room($data);
+                header('Location: ../../home/rooms');
             }
         }
         // validate inputs and remove special characters

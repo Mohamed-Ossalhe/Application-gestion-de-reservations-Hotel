@@ -31,23 +31,29 @@ class homeController extends Controller {
     public function searchRoom() {
         $this->model("Room");
         $data = array();
-        extract($_POST);
-        if(isset($_POST['room_type']) && !empty($_POST['room_type'])) {
-            if(isset($_POST['suite_type']) && !empty($_POST['suite_type']) && $_POST['suite_type'] !== null) {
-                $data = array(
-                    "room_type" => $_POST["room_type"],
-                    "suite_type" => $_POST["suite_type"],
-                );
+        $rooms = "";
+        if(!empty($_POST['suite_type']) && !empty($_POST['room_type']) && !empty($_POST["check_in"]) && !empty($_POST["check_out"])) {
+            $data = array(
+                "room_type" => $_POST["room_type"],
+                "suite_type" => $_POST["suite_type"],
+                "check_in" => $_POST["check_in"],
+                "check_out" => $_POST["check_out"]
+            );
                 // echo 'hello world am using ajax roomtype: '. $data['room_type'] . ' + suite type:'. $data['suite_type'];
-            }else {
-                $data = array(
-                    "room_type" => $_POST["room_type"],
-                    "suite_type" => $_POST["suite_type"] = null
-                );
                 // echo 'hello world am using ajax roomtype: '. $data['room_type'] . ' + no suite type';
-            }
             $rooms = $this->model->searchData($data);
             echo json_encode($rooms);
+        }else if(empty($_POST['suite_type']) && !empty($_POST['room_type']) && !empty($_POST["check_in"]) && !empty($_POST["check_out"])) {
+            $data = array(
+                "room_type" => $_POST["room_type"],
+                "suite_type" => $_POST["suite_type"] = null,
+                "check_in" => $_POST["check_in"],
+                "check_out" => $_POST["check_out"]
+            );
+            $rooms = $this->model->searchData($data);
+            echo json_encode($rooms);
+        }else {
+            echo json_encode(["error" => "No Rooms Available"]);
         }
     }
 }

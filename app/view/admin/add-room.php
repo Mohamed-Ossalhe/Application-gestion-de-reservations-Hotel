@@ -48,7 +48,7 @@
                         <option value="Standard">Standard suite room</option>
                         <option value="Junior">Junior Suite</option>
                         <option value="Presidential">Presidential suite</option>
-                        <option value="Presidential"> Penthouse suites</option>
+                        <option value="Penthouse"> Penthouse suites</option>
                         <option value="Honeymoon">Honeymoon suite</option>
                         <option value="Bridal">Bridal suite</option>
                     </select>

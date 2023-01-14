@@ -32,7 +32,7 @@
                     <input type="password" name="password" id="floating_password" class="form-inputs block py-2.5 px-0 w-full text-sm text-main-clr bg-transparent border-0 border-b-2 border-color border-seco appearance-none focus:outline-none focus:ring-0 focus:border-clr peer" placeholder=" " required />
                     <i class='bx absolute bx-hide hide translate-x-72 md:translate-x-96 -translate-y-8 text-xl cursor-pointer'></i>
                     <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-secondary-clr peer-focus:text-secondary-clr peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
-                    <p class="pass-error error"></p>
+                    <p class="password-error error"></p>
                 </div>
                 <div class="flex items-center justify-between flex-col md:flex-row w-full md:w-3/5 mt-20">
                     <a href="../home/" class="underline decoration-dotted">Go Back To Home?</a>

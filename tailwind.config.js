@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'font-wilkysta': ['Wilkysta'],
-        'font-montserrat': ['Montserrat']
+        'wilkysta': ['Wilkysta'],
+        'montserrat': ['Montserrat']
       },
       "colors" : {
         "main-clr" : "#EFEDEA",

@@ -13,7 +13,7 @@
 <body class="bg-main-clr">
     <!-- ! start header -->
     <div class="top-bar">
-        <div class="container py-1 mx-auto flex items-left lg:items-center flex-col md:flex-row justify-between montserrat-font px-4">
+        <div class="container py-1 mx-auto flex items-left lg:items-center flex-col md:flex-row justify-between font-montserrat px-4">
             <div class="info flex items-start md:items-center flex-col md:flex-row text-sm gap-0 md:gap-5">
                 <div class="phone flex items-center gap-1">
                     <i class='bx bx-phone text-lg' ></i>
@@ -31,7 +31,7 @@
                     <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-6 h-6 rounded-full cursor-pointer" src="https://randomuser.me/api/portraits/men/86.jpg" alt="User dropdown">
 
                     <!-- Dropdown menu -->
-                    <div id="userDropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+                    <div id="userDropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow">
                         <div class="py-3 px-4 text-sm text-gray-900 dark:text-white">
                             <div><?php echo ($_SESSION["username"]) ? $_SESSION["username"] : "no user" ?></div>
                             <div class="font-medium truncate"><?php echo ($_SESSION["email"]) ? $_SESSION["email"] : "no email" ?></div>
@@ -62,7 +62,7 @@
             </div>
         </div>
     </div>
-    <nav class="border border-y-2 border-clr px-2 sm:px-4 py-2.5 wilkysta-font">
+    <nav class="border border-y-2 border-clr px-2 sm:px-4 py-2.5 font-wilkysta">
         <div class="container flex flex-wrap items-center justify-between mx-auto">
             <a href="./" class="flex items-center">
                 <img src="<?= BASE_URL?>/public/assets/img/logo-1.png" class="h-12 mr-3" alt="Flowbite Logo" />
@@ -74,34 +74,34 @@
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 gap-10" id="mobile-menu-language-select">
                 <ul class="flex flex-col mt-4 uppercase border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-lg md:font-medium md:border-0">
                     <li>
-                        <a href="./" class="block py-2 pl-3 pr-4 text-main-clr md:p-0 hover:text-secondary-clr" aria-current="page">Home</a>
+                        <a href="./" class="block py-2 pl-3 pr-4 text-secondary-clr md:p-0 hover:text-accent-clr transition-colors" aria-current="page">Home</a>
                     </li>
-                    <i class='bx bxs-circle text-secondary-clr text-sm hidden md:block' ></i>
+                    <i class='bx bxs-circle text-accent-clr text-sm hidden md:block' ></i>
                     <li>
-                    <a href="./rooms" class="block py-2 pl-3 pr-4 text-main-clr hover:text-secondary-clr md:p-0">Rooms</a>
+                    <a href="./rooms" class="block py-2 pl-3 pr-4 text-secondary-clr hover:text-accent-clr md:p-0 transition-colors">Rooms</a>
                     </li>
-                    <i class='bx bxs-circle text-secondary-clr text-sm hidden md:block' ></i>
+                    <i class='bx bxs-circle text-accent-clr text-sm hidden md:block' ></i>
                     <li>
-                    <a href="./about" class="block py-2 pl-3 pr-4 text-main-clr hover:text-secondary-clr md:p-0">About</a>
+                    <a href="./about" class="block py-2 pl-3 pr-4 text-secondary-clr hover:text-accent-clr md:p-0 transition-colors">About</a>
                     </li>
                     <!-- <i class='bx bxs-circle text-secondary-clr text-sm hidden md:block' ></i>
                     <li>
                     <a href="#" class="block py-2 pl-3 pr-4 text-main-clr hover:text-secondary-clr md:hover:text-secondary-clr md:p-0">Pricing</a>
                     </li> -->
-                    <i class='bx bxs-circle text-secondary-clr text-sm hidden md:block' ></i>
+                    <i class='bx bxs-circle text-accent-clr text-sm hidden md:block' ></i>
                     <li>
-                        <a href="./contact" class="block py-2 pl-3 pr-4 text-main-clr hover:text-secondary-clr md:p-0">Contact</a>
+                        <a href="./contact" class="block py-2 pl-3 pr-4 text-secondary-clr hover:text-accent-clr md:p-0 transition-colors">Contact</a>
                     </li>
                     <?php if(isset($_SESSION["logged"]) && $_SESSION["logged"] === true):?>
                         <li></li>
                     <?php else:?>
-                        <i class='bx bxs-circle text-secondary-clr text-sm hidden md:block' ></i>
+                        <i class='bx bxs-circle text-accent-clr text-sm hidden md:block' ></i>
                         <li>
-                            <a href="./sign_up" class="block py-2 pl-3 pr-4 text-main-clr hover:text-secondary-clr md:p-0">sign up</a>
+                            <a href="./sign_up" class="block py-2 pl-3 pr-4 text-secondary-clr hover:text-accent-clr transition-colors md:p-0">sign up</a>
                         </li>
                     <?php endif;?>
                 </ul>
-                <a href="<?php echo (isset($_SESSION["logged"]) && $_SESSION["logged"] === true) ? "./rooms" : "./log_in"?>"><button class="uppercase py-2 px-5 border border-2 border-black hover:bg-black hover:text-white transition">book now</button></a>
+                <a href="<?php echo (isset($_SESSION["logged"]) && $_SESSION["logged"] === true) ? "./rooms" : "./log_in"?>"><button class="uppercase py-2 px-5 border-2 border-black hover:bg-black hover:text-white transition">book now</button></a>
             </div>
         </div>
     </nav>

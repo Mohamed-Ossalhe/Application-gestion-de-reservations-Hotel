@@ -1,26 +1,11 @@
-
-// const roomType = document.getElementById("room-type").value;
-// const suiteType = document.getElementById("suite-type").value;
-// const check_in_date = document.getElementById("check_in_date").value;
-// const check_out_date = document.getElementById("check_out_date").value;
-
-
-
-// searchForm.submit(function(event) {
-    //     event.preventDefault();
-    //     console.log(roomType, suiteType, check_in_date, check_out_date)
-    // })
-    
 function submitSearch(event) {
     event.preventDefault();
     let html = "";
     const content = $(".rooms-wrapper");
-    // content = "";
     const roomType = $("#room-type").val();
     const suiteType = $("#suite-type").val();
     const check_in_date = $("#check_in_date").val();
     const check_out_date = $("#check_out_date").val();
-    // console.log(roomType, suiteType, check_in_date, check_out_date)
     $.ajax({
         url: 'http://localhost/Application-gestion-de-reservations-Hotel/public/home/searchRoom',
         type: 'POST',
@@ -33,9 +18,7 @@ function submitSearch(event) {
         success: function(responce) {
             let responseJSON = $.parseJSON(responce);
             console.log(responseJSON);
-            // html = `<div class="rooms-wrapper grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-7 gap-x-10 gap-y-12">`;
             if(responseJSON.length !== 0) {
-                // ? finished!!!
                 responseJSON.forEach((item, index)=>{
                     let dataSuiteType = (item.suite_type !== null) ? "Suite Type: " + item.suite_type : "" ;
                     html += `
@@ -58,23 +41,15 @@ function submitSearch(event) {
                             </div>
                         </div>
                     </div>`;
-                    // html += `<h1>${item.room_id}</h1>`;
-                    // console.log(html);
-                    console.log(item.room_id);
                 });
-                // html = "</div>";
             }else {
-                // content.html(`<p>No Rooms Available</p>`);
                 html += `<h1 class="pl-20">Sorry! No ${suiteType} Rooms Available for the moment</h1>`;
             }
             content.html(html);
-            // console.log("responce")
-            // console.log(responce)
         },
         error: function(error) {
             console.log(error);
         }
-    })
-    console.log("submite")
+    });
 }
 

@@ -1645,9 +1645,9 @@ input:checked + .toggle-bg {
   border-color: rgb(200 30 30 / var(--tw-border-opacity));
 }
 
-.border-main-clr {
+.border-secondary-clr {
   --tw-border-opacity: 1;
-  border-color: rgb(239 237 234 / var(--tw-border-opacity));
+  border-color: rgb(30 30 30 / var(--tw-border-opacity));
 }
 
 .border-black {
@@ -1864,6 +1864,14 @@ input:checked + .toggle-bg {
   text-align: center;
 }
 
+.font-wilkysta {
+  font-family: Wilkysta;
+}
+
+.font-montserrat {
+  font-family: Montserrat;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -1972,9 +1980,9 @@ input:checked + .toggle-bg {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.text-main-clr {
+.text-secondary-clr {
   --tw-text-opacity: 1;
-  color: rgb(239 237 234 / var(--tw-text-opacity));
+  color: rgb(30 30 30 / var(--tw-text-opacity));
 }
 
 .text-gray-500 {
@@ -1982,14 +1990,19 @@ input:checked + .toggle-bg {
   color: rgb(107 114 128 / var(--tw-text-opacity));
 }
 
-.text-secondary-clr {
+.text-main-clr {
   --tw-text-opacity: 1;
-  color: rgb(30 30 30 / var(--tw-text-opacity));
+  color: rgb(239 237 234 / var(--tw-text-opacity));
 }
 
 .text-gray-700 {
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+
+.text-accent-clr {
+  --tw-text-opacity: 1;
+  color: rgb(222 194 186 / var(--tw-text-opacity));
 }
 
 .text-blue-600 {
@@ -2057,6 +2070,12 @@ input:checked + .toggle-bg {
   transition-duration: 150ms;
 }
 
+.transition-colors {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
 .transition-transform {
   transition-property: transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -2094,7 +2113,7 @@ input:checked + .toggle-bg {
 .side-menu-li-active {
   padding: 0.2rem 0 0.2rem 0.5rem;
   background-color: #dec2ba89;
-  color: #1E1E1E;
+  color: #ffffff;
 }
 
 .hover\:border:hover {
@@ -2105,14 +2124,24 @@ input:checked + .toggle-bg {
   border-width: 2px;
 }
 
-.hover\:border-main-clr:hover {
+.hover\:border-accent-clr:hover {
   --tw-border-opacity: 1;
-  border-color: rgb(239 237 234 / var(--tw-border-opacity));
+  border-color: rgb(222 194 186 / var(--tw-border-opacity));
 }
 
 .hover\:border-black:hover {
   --tw-border-opacity: 1;
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
+
+.hover\:border-secondary-clr:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(30 30 30 / var(--tw-border-opacity));
+}
+
+.hover\:border-main-clr:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(239 237 234 / var(--tw-border-opacity));
 }
 
 .hover\:border-gray-300:hover {
@@ -2149,14 +2178,27 @@ input:checked + .toggle-bg {
   background-color: transparent;
 }
 
-.hover\:bg-main-clr:hover {
+.hover\:bg-accent-clr:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(239 237 234 / var(--tw-bg-opacity));
+  background-color: rgb(222 194 186 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-secondary-clr:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 30 30 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-blue-800:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(30 66 159 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-accent-clr\/30:hover {
+  background-color: rgb(222 194 186 / 0.3);
+}
+
+.hover\:bg-secondary-clr\/30:hover {
+  background-color: rgb(30 30 30 / 0.3);
 }
 
 .hover\:text-white:hover {
@@ -2169,14 +2211,14 @@ input:checked + .toggle-bg {
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
-.hover\:text-main-clr:hover {
-  --tw-text-opacity: 1;
-  color: rgb(239 237 234 / var(--tw-text-opacity));
-}
-
 .hover\:text-secondary-clr:hover {
   --tw-text-opacity: 1;
   color: rgb(30 30 30 / var(--tw-text-opacity));
+}
+
+.hover\:text-accent-clr:hover {
+  --tw-text-opacity: 1;
+  color: rgb(222 194 186 / var(--tw-text-opacity));
 }
 
 .hover\:text-gray-900:hover {
@@ -2281,6 +2323,11 @@ input:checked + .toggle-bg {
 
 .peer:focus ~ .peer-focus\:font-medium {
   font-weight: 500;
+}
+
+.peer:focus ~ .peer-focus\:text-accent-clr {
+  --tw-text-opacity: 1;
+  color: rgb(222 194 186 / var(--tw-text-opacity));
 }
 
 .peer:focus ~ .peer-focus\:text-secondary-clr {

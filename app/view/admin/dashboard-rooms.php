@@ -25,7 +25,7 @@
                         <img src="<?= BASE_URL?>/public/assets/img/rooms/<?=$room["room_image"]?>" alt="" class="w-80 h-32">
                     </div>
                     <div class="room-text">
-                        <h1 class="wilkysta-font text-xl">Room #<?=$room["room_id"]?></h1>
+                        <h1 class="font-wilkysta text-xl">Room #<?=$room["room_id"]?></h1>
                         <p class="text-sm text-gray-500 my-2">
                             <?=$room["room_description"]?>
                         </p>

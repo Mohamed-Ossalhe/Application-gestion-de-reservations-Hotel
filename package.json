@@ -1,0 +1,35 @@
+{
+  "name": "pestanacr7",
+  "version": "1.0.0",
+  "description": "Hotel Reservations Website",
+  "main": "index.js",
+  "scripts": {
+    "build:watch": "npx tailwindcss -i public/assets/css/tailwindcss.css -o public/assets/css/core.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mohamed-Ossalhe/Application-gestion-de-reservations-Hotel.git"
+  },
+  "keywords": [
+    "hotel",
+    "reservation",
+    "booking",
+    "rooms",
+    "cr7",
+    "suites",
+    "single-rooms",
+    "double-rooms"
+  ],
+  "author": "Mohamed OSSALHE",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mohamed-Ossalhe/Application-gestion-de-reservations-Hotel/issues"
+  },
+  "homepage": "https://github.com/Mohamed-Ossalhe/Application-gestion-de-reservations-Hotel#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.2.4"
+  },
+  "dependencies": {
+    "flowbite": "^1.6.3"
+  }
+}

@@ -70,25 +70,21 @@
             }
         }
         // ! book room
-        public function bookRoom($id) {
-            // if(!isUserLogged()){
-            //     header("Location: http://localhost/Application-gestion-de-reservations-Hotel/public/home/log_in");
-            // }else {
-            //     $this->model("Room");
-            //     $roomChoosed = $this->model->getDataRow($id);
-            //     // check_in_date	check_out_date	room_id	client_id	guests_count	total_price
-            //     $data = array(
-            //         "check_in" => '23/12/2022',
-            //         "check_out" => '25/12/2022',
-            //         "room_id" => $roomChoosed["room_id"],
-            //         "client_id" => $_SESSION["user_id"],
-            //         "guests_count" => 6,
-            //         "total_price" => 300
-            //     );
-            //     $this->model('Reservation');
-            //     $this->model->book_room($data);
-            //     header('Location: ../../home/rooms');
-            // }
+        public function bookRoom() {
+            extract($_POST);
+            if(!empty($check_in) && !empty($check_out) && !empty($room_id) && !empty($total_price)){
+                $data = array(
+                    "check-in" => $this->validateData(date("Y-m-d", strtotime($check_in))),
+                    "check-out" => $this->validateData(date("Y-m-d", strtotime($check_out))),
+                    "room-id" => $this->validateData($room_id),
+                    "client-id" => $_SESSION["user_id"],
+                    "total-guets" => $total_guests,
+                    "total-price" => $this->validateData($total_price)
+                );
+                // var_dump($data);
+                $this->model("Reservation");
+                $this->model->book_room($data);
+            }
         }
         // validate inputs and remove special characters
         public function validateData($data) {

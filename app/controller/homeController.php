@@ -26,34 +26,34 @@ class homeController extends Controller {
         $this->view("home/sign-up", ["error" => $error]);
         $this->view->render();
     }
-
     // search rooms
     public function searchRoom() {
+        extract($_POST);
+        // echo $room_type . " " . $suite_type . " " . $check_in . " " . $check_out;
+        $data = array(
+            "room-type" => $this->validateData($room_type),
+            "suite-type" => $this->validateData($suite_type),
+            "check-in" => $this->validateData(date("Y-m-d", strtotime($check_in))),
+            "check-out" => $this->validateData(date("Y-m-d", strtotime($check_out)))
+        );
         $this->model("Room");
-        $data = array();
-        $rooms = "";
-        if(!empty($_POST['suite_type']) && !empty($_POST['room_type']) && !empty($_POST["check_in"]) && !empty($_POST["check_out"])) {
-            $data = array(
-                "room_type" => $_POST["room_type"],
-                "suite_type" => $_POST["suite_type"],
-                "check_in" => $_POST["check_in"],
-                "check_out" => $_POST["check_out"]
-            );
-                // echo 'hello world am using ajax roomtype: '. $data['room_type'] . ' + suite type:'. $data['suite_type'];
-                // echo 'hello world am using ajax roomtype: '. $data['room_type'] . ' + no suite type';
-            $rooms = $this->model->searchData($data);
-            echo json_encode($rooms);
-        }else if(empty($_POST['suite_type']) && !empty($_POST['room_type']) && !empty($_POST["check_in"]) && !empty($_POST["check_out"])) {
-            $data = array(
-                "room_type" => $_POST["room_type"],
-                "suite_type" => $_POST["suite_type"] = null,
-                "check_in" => $_POST["check_in"],
-                "check_out" => $_POST["check_out"]
-            );
-            $rooms = $this->model->searchData($data);
-            echo json_encode($rooms);
-        }else {
-            echo json_encode(["error" => "No Rooms Available"]);
+        $rooms = $this->model->searchData($data);
+        echo json_encode($rooms);
+    }
+    // display rooms
+    public function display_Rooms(){
+        $this->model("Room");
+        $rooms = $this->model->getData();
+        echo json_encode($rooms);
+    }
+
+    // validate inputs and remove special characters
+    public function validateData($data) {
+        if(isset($data) and !empty($data)) {
+            $data = trim($data);
+            $data = stripcslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
         }
     }
 }

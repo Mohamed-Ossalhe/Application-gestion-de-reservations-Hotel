@@ -17,7 +17,7 @@
         <?php $roomDetails = $this->view_data["roomDetails"];?>
         <a href="../rooms"><button class="py-2 px-4 border border-2 border-black text-black mt-4 rounded hover:bg-black hover:text-white transition">Go Back</button></a>
         <div class="infos bg-orange-100 my-5 py-4 rounded drop-shadow-xl flex items-start justify-evenly">
-            <div class="room" id="<?=$roomDetails["room_id"]?>">
+            <div class="booked-room" id="<?=$roomDetails["room_id"]?>">
                 <h2 class="text-2xl font-bold mb-6">Room Info:</h2>
                 <div class="room-info flex gap-5">
                     <div class="img w-64"><img class="rounded" src="<?=BASE_URL?>/public/assets/img/rooms/<?=$roomDetails["room_image"]?>" alt=""></div>
@@ -27,7 +27,7 @@
                         <div class="room-desc text-base"><span class="font-medium">Room Type:</span> <?=$roomDetails["room_type"]?></div>
                         <div class="room-desc text-base"><?=($roomDetails["suite_type"] !== null) ? "<span class=\"font-medium\">Suite Type:</span> ".$roomDetails["suite_type"] : ''?></div>
                         <div class="capacity text-base"><span class="font-medium">Capacity:</span><?=$roomDetails["capacity"]?></div>
-                        <div class="price text-xl my-3"><span class="font-medium">Price:</span> $<?=$roomDetails["room_price"]?>/night</div>
+                        <div class="price text-xl my-3"><span class="font-medium">Price:</span> $<span class="room-price"><?=$roomDetails["room_price"]?></span>/night</div>
                     </div>
                 </div>
             </div>
@@ -47,7 +47,8 @@
     </div>
     <!-- form -->
     <div class="book-form hidden container mx-auto px-96 h-100 my-12">
-        <form method="post" class="h-full form">
+        <form method="post" class="h-full">
+            <div class="guests-form"></div>
             <input type="submit" value="Add Guests" class="py-2 px-4 bg-black text-white rounded">
         </form>
     </div>

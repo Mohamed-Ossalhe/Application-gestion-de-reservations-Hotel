@@ -17,7 +17,7 @@
                 </div>
                 <!-- info dorpdown -->
                 <div class="info-dropdown">
-                    <button id="states-button" data-dropdown-toggle="dropdown-states" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-main-clr bg-gray-100 rounded hover:bg-gray-200 focus:outline-none" type="button">
+                    <button id="states-button" data-dropdown-toggle="dropdown-states" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-secondary-clr bg-gray-100 rounded hover:bg-gray-200 focus:outline-none" type="button">
                         <i class='bx bx-file-blank text-xl'></i>
                         <span class="text-md mx-4">reservation Info</span>
                         <i class='bx bx-chevron-down text-lg'></i>

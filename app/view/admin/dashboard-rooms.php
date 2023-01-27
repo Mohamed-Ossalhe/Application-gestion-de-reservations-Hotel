@@ -54,7 +54,7 @@
                         </ul>
                     </div>
                     <!-- price -->
-                    <strong class="wilkysta-font text-2xl mt-7">$<?=$room["room_price"]?>/night</strong>
+                    <strong class="font-wilkysta text-2xl mt-7">$<?=$room["room_price"]?>/night</strong>
                 </div>
             </div>
             <?php 

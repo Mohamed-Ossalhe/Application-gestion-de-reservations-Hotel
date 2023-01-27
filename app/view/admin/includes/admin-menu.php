@@ -39,7 +39,7 @@
                     </a>
                 </li>
                 <h4 class="text-accent-clr text-lg md:text-xs uppercase">management</h4>
-                <li class="text-2xl md:text-base capitalize text-white hover:bg-secondary-clr/30 hover:text-white transition py-2 pl-3">
+                <li class="text-2xl md:text-base capitalize text-white hover:bg-accent-clr/30 hover:text-white transition py-2 pl-3">
                     <a href="./Dashbaord_Rooms" class="aside-menu-item flex gap-4 items-center">
                         <i class="bx bx-hotel text-accent-clr"></i>
                         <span>rooms</span>

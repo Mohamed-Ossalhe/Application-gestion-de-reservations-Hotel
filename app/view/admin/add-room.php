@@ -12,7 +12,7 @@
 </head>
 <body>
     
-    <div class="container mx-auto flex items-center flex-col justify-center h-screen w-screen text-black">
+    <div class="container mx-auto flex items-center flex-col justify-center h-screen w-screen text-black font-montserrat">
         <header class="flex items-center justify-center w-96">
             <h1 class="text-2xl uppercase font-bold">Add Room</h1>
         </header>

@@ -5,10 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pestana :: Log-in</title>
-    <!-- tailwind css -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- flowbite -->
-    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.5/dist/flowbite.min.css" />
     <!-- icons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- core css -->
@@ -21,7 +17,7 @@
         <?php $roomDetails = $this->view_data["roomDetails"];?>
         <a href="../rooms"><button class="py-2 px-4 border border-2 border-black text-black mt-4 rounded hover:bg-black hover:text-white transition">Go Back</button></a>
         <div class="infos bg-orange-100 my-5 py-4 rounded drop-shadow-xl flex items-start justify-evenly">
-            <div class="">
+            <div class="room" id="<?=$roomDetails["room_id"]?>">
                 <h2 class="text-2xl font-bold mb-6">Room Info:</h2>
                 <div class="room-info flex gap-5">
                     <div class="img w-64"><img class="rounded" src="<?=BASE_URL?>/public/assets/img/rooms/<?=$roomDetails["room_image"]?>" alt=""></div>
@@ -42,7 +38,7 @@
                 <div class="client-email"><span class="font-medium">Client Phone Number:</span> <?=$_SESSION["phone_number"]?></div>
                 <div class="book-btns flex items-center gap-3  mt-20">
                     <button class="add-guest hidden py-2 px-4 bg-black text-white border border-2 border-black hover:bg-transparent hover:text-black hover:border hover:border-2 hover:border-black transition rounded">Add Guest</button>
-                    <form action="../../client/bookRoom/<?=$roomDetails["room_id"]?>" method="post">
+                    <form class="confirm-booking" method="post">
                         <button type="submit" name="try" class="py-2 px-4 bg-black text-white border border-2 border-black rounded hover:bg-transparent hover:text-black hover:border-black transition">Confirm Booking</button>
                     </form>
                 </div>

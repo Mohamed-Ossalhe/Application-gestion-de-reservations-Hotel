@@ -42,17 +42,5 @@ $(document).ready(function(){
         </div>`;
         guestsFormDiv.removeClass("hidden");
         guestsForm.prepend(guestForm);
-        let guestFirstName = $("#first-name");
-        let guestLastName = $("#last-name");
-        let guestBirthDate = $("#date-of-birth");
-        guestsForm.submit((e)=>{
-            e.preventDefault();
-            let guestData = {
-                "firstName": guestFirstName.value,
-                "lastName": guestLastName.value,
-                "birthDate": guestBirthDate.value
-            }
-            console.log(guestData)
-        })
     }
 });

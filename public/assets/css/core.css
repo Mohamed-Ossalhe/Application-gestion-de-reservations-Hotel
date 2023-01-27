@@ -1990,11 +1990,6 @@ input:checked + .toggle-bg {
   color: rgb(107 114 128 / var(--tw-text-opacity));
 }
 
-.text-main-clr {
-  --tw-text-opacity: 1;
-  color: rgb(239 237 234 / var(--tw-text-opacity));
-}
-
 .text-gray-700 {
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity));
@@ -2003,6 +1998,11 @@ input:checked + .toggle-bg {
 .text-accent-clr {
   --tw-text-opacity: 1;
   color: rgb(222 194 186 / var(--tw-text-opacity));
+}
+
+.text-main-clr {
+  --tw-text-opacity: 1;
+  color: rgb(239 237 234 / var(--tw-text-opacity));
 }
 
 .text-blue-600 {
@@ -2178,27 +2178,13 @@ input:checked + .toggle-bg {
   background-color: transparent;
 }
 
-.hover\:bg-accent-clr:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(222 194 186 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-secondary-clr:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(30 30 30 / var(--tw-bg-opacity));
+.hover\:bg-accent-clr\/30:hover {
+  background-color: rgb(222 194 186 / 0.3);
 }
 
 .hover\:bg-blue-800:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(30 66 159 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-accent-clr\/30:hover {
-  background-color: rgb(222 194 186 / 0.3);
-}
-
-.hover\:bg-secondary-clr\/30:hover {
-  background-color: rgb(30 30 30 / 0.3);
 }
 
 .hover\:text-white:hover {
@@ -2211,14 +2197,14 @@ input:checked + .toggle-bg {
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
-.hover\:text-secondary-clr:hover {
-  --tw-text-opacity: 1;
-  color: rgb(30 30 30 / var(--tw-text-opacity));
-}
-
 .hover\:text-accent-clr:hover {
   --tw-text-opacity: 1;
   color: rgb(222 194 186 / var(--tw-text-opacity));
+}
+
+.hover\:text-secondary-clr:hover {
+  --tw-text-opacity: 1;
+  color: rgb(30 30 30 / var(--tw-text-opacity));
 }
 
 .hover\:text-gray-900:hover {

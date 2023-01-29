@@ -1,5 +1,5 @@
     <!-- flowbite -->
-    <script src="https://unpkg.com/flowbite@1.5.5/dist/flowbite.js"></script>
+    <script src="<?=BASE_URL?>/node_modules/flowbite/dist/flowbite.min.js"></script>
     <!-- datepicker -->
     <script src="https://unpkg.com/flowbite@1.5.5/dist/datepicker.js"></script>
     <!-- jquery -->

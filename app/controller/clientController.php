@@ -23,7 +23,7 @@
                         exit;
                     }else {
                         $this->model->signUp($data);
-                        header("Location: http://localhost/Application-gestion-de-reservations-Hotel/public/home/log_in");
+                        redirect("home/log_in");
                     }
                 }else {
                     $this->index("Please Fill All The Fields!");
@@ -34,7 +34,7 @@
         // ! log in
         public function clientLogIn() {
             if(isset($_POST["submit"])) {
-                if(!isset($_SESSION["logged"]) && !isset($_SESSION["username"])) {
+                if(!isUserLogged()) {
                     if(!empty($_POST["email"]) && !empty($_POST["password"])) {
                         $data = array(
                             "email" => filter_var($this->validateData($_POST["email"]), FILTER_SANITIZE_EMAIL),
@@ -48,7 +48,7 @@
                             $_SESSION["user_id"] = $client["client_id"];
                             $_SESSION["phone_number"] = $client["phone_number"];
                             $_SESSION["logged"] = true;
-                            header("Location: http://localhost/Application-gestion-de-reservations-Hotel/public/home/rooms");
+                            redirect("home/rooms");
                         }else {
                             $this->view("home/log-in", ["error" => "Uncorrect Email Or Password"]);
                             $this->view->render();
@@ -66,28 +66,24 @@
         // ! log out
         public function clientLogOut() {
             if(session_destroy()) {
-                header("Location: http://localhost/Application-gestion-de-reservations-Hotel/public/home/");
+                redirect("home/");
             }
         }
         // ! book room
-        public function bookRoom($id) {
-            if(!isset($_SESSION["logged"]) && $_SESSION["logged"] !== true){
-                header("Location: http://localhost/Application-gestion-de-reservations-Hotel/public/home/log_in");
-            }else {
-                $this->model("Room");
-                $roomChoosed = $this->model->getDataRow($id);
-                // check_in_date	check_out_date	room_id	client_id	guests_count	total_price
+        public function bookRoom() {
+            extract($_POST);
+            if(!empty($check_in) && !empty($check_out) && !empty($room_id) && !empty($total_price)){
                 $data = array(
-                    "check_in" => '23/12/2022',
-                    "check_out" => '25/12/2022',
-                    "room_id" => $roomChoosed["room_id"],
-                    "client_id" => $_SESSION["user_id"],
-                    "guests_count" => 6,
-                    "total_price" => 300
+                    "check-in" => $this->validateData(date("Y-m-d", strtotime($check_in))),
+                    "check-out" => $this->validateData(date("Y-m-d", strtotime($check_out))),
+                    "room-id" => $this->validateData($room_id),
+                    "client-id" => $_SESSION["user_id"],
+                    "total-guets" => $total_guests,
+                    "total-price" => $this->validateData($total_price)
                 );
-                $this->model('Reservation');
+                // var_dump($data);
+                $this->model("Reservation");
                 $this->model->book_room($data);
-                header('Location: ../../home/rooms');
             }
         }
         // validate inputs and remove special characters

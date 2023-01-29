@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "Wilkysta";
+    src: url("../fonts/Wilkysta.ttf");
+}
+@font-face {
+    font-family: "Montserrat";
+    src: url("../fonts/Montserrat-Regular.ttf");
+}
+
+/* dashboard active class */
+.side-menu-li-active {
+    padding: 0.2rem 0 0.2rem 0.5rem;
+    background-color: #dec2ba89;
+    color: #ffffff;
+}

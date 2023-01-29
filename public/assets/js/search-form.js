@@ -1,8 +1,4 @@
 // ! Dynamic Form using jQuery
-// let suiteTypeDiv = document.querySelector(".suite-type");
-// let suiteTypeSelect = document.querySelector("#suite-type");
-// let roomTypeSelect = document.querySelector("#room-type");
-
 $(document).ready(function () {
     let suiteTypeDiv = $(".suite-type");
     let suiteTypeSelect = $("#suite-type");
@@ -34,26 +30,3 @@ $(document).ready(function () {
         }
     });
 });
-// document.addEventListener("DOMContentLoaded", ()=>{
-//     suiteTypeDiv.style.display = 'none';
-//     suiteTypeSelect.setAttribute("disabled", "disabled");
-//     suiteTypeSelect.value = '';
-//     if(roomTypeSelect.value === "suite") {
-//         suiteTypeDiv.style.display = 'block';
-//         suiteTypeSelect.removeAttribute("disabled");
-//     }else {
-//         suiteTypeDiv.style.display = 'none';
-//         suiteTypeSelect.setAttribute("disabled", "disabled");
-//         suiteTypeSelect.value = '';
-//     }
-//     roomTypeSelect.addEventListener("change", (e)=>{
-//         if(e.target.value === "suite") {
-//             suiteTypeDiv.style.display = 'block';
-//             suiteTypeSelect.removeAttribute("disabled");
-//         }else {
-//             suiteTypeDiv.style.display = 'none';
-//             suiteTypeSelect.setAttribute("disabled", "disabled");
-//             suiteTypeSelect.value = '';
-//         }
-//     });
-// })

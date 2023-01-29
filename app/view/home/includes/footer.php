@@ -4,6 +4,8 @@
     <script src="https://unpkg.com/flowbite@1.5.5/dist/datepicker.js"></script>
     <!-- jquery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <!-- consfirm booking js script -->
+    <script src="<?=BASE_URL?>public/assets/js/confirm-booking.js"></script>
     <!-- booking js script -->
     <script src="<?=BASE_URL?>public/assets/js/book.js"></script>
     <!-- form-validation-script -->

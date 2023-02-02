@@ -74,15 +74,15 @@
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 gap-10" id="mobile-menu-language-select">
                 <ul class="flex flex-col mt-4 uppercase border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-lg md:font-medium md:border-0">
                     <li>
-                        <a href="./" class="block py-2 pl-3 pr-4 text-secondary-clr md:p-0 hover:text-accent-clr transition-colors" aria-current="page">Home</a>
+                        <a href="<?=BASE_URL?>public/home/" class="block py-2 pl-3 pr-4 text-secondary-clr md:p-0 hover:text-accent-clr transition-colors" aria-current="page">Home</a>
                     </li>
                     <i class='bx bxs-circle text-accent-clr text-sm hidden md:block' ></i>
                     <li>
-                    <a href="./rooms" class="block py-2 pl-3 pr-4 text-secondary-clr hover:text-accent-clr md:p-0 transition-colors">Rooms</a>
+                    <a href="<?=BASE_URL?>public/home/rooms" class="block py-2 pl-3 pr-4 text-secondary-clr hover:text-accent-clr md:p-0 transition-colors">Rooms</a>
                     </li>
                     <i class='bx bxs-circle text-accent-clr text-sm hidden md:block' ></i>
                     <li>
-                    <a href="./about" class="block py-2 pl-3 pr-4 text-secondary-clr hover:text-accent-clr md:p-0 transition-colors">About</a>
+                    <a href="<?=BASE_URL?>public/home/about" class="block py-2 pl-3 pr-4 text-secondary-clr hover:text-accent-clr md:p-0 transition-colors">About</a>
                     </li>
                     <!-- <i class='bx bxs-circle text-secondary-clr text-sm hidden md:block' ></i>
                     <li>
@@ -90,18 +90,18 @@
                     </li> -->
                     <i class='bx bxs-circle text-accent-clr text-sm hidden md:block' ></i>
                     <li>
-                        <a href="./contact" class="block py-2 pl-3 pr-4 text-secondary-clr hover:text-accent-clr md:p-0 transition-colors">Contact</a>
+                        <a href="<?=BASE_URL?>public/home/contact" class="block py-2 pl-3 pr-4 text-secondary-clr hover:text-accent-clr md:p-0 transition-colors">Contact</a>
                     </li>
                     <?php if(isset($_SESSION["logged"]) && $_SESSION["logged"] === true):?>
                         <li></li>
                     <?php else:?>
                         <i class='bx bxs-circle text-accent-clr text-sm hidden md:block' ></i>
                         <li>
-                            <a href="./sign_up" class="block py-2 pl-3 pr-4 text-secondary-clr hover:text-accent-clr transition-colors md:p-0">sign up</a>
+                            <a href="<?=BASE_URL?>public/home/sign_up" class="block py-2 pl-3 pr-4 text-secondary-clr hover:text-accent-clr transition-colors md:p-0">sign up</a>
                         </li>
                     <?php endif;?>
                 </ul>
-                <a href="<?php echo (isset($_SESSION["logged"]) && $_SESSION["logged"] === true) ? "./rooms" : "./log_in"?>"><button class="uppercase py-2 px-5 border-2 border-black hover:bg-black hover:text-white transition">book now</button></a>
+                <a href="<?php echo (isset($_SESSION["logged"]) && $_SESSION["logged"] === true) ? BASE_URL . "public/home/rooms" : BASE_URL . "public/home/log_in"?>"><button class="uppercase py-2 px-5 border-2 border-black hover:bg-black hover:text-white transition">book now</button></a>
             </div>
         </div>
     </nav>

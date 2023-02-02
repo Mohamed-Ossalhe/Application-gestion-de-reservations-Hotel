@@ -1029,6 +1029,10 @@ input:checked + .toggle-bg {
   position: relative;
 }
 
+.sticky {
+  position: sticky;
+}
+
 .inset-0 {
   top: 0px;
   right: 0px;
@@ -1204,6 +1208,10 @@ input:checked + .toggle-bg {
   margin-bottom: 0.25rem;
 }
 
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
 .block {
   display: block;
 }
@@ -1330,6 +1338,14 @@ input:checked + .toggle-bg {
 
 .w-4 {
   width: 1rem;
+}
+
+.w-1\/6 {
+  width: 16.666667%;
+}
+
+.w-5\/6 {
+  width: 83.333333%;
 }
 
 .flex-1 {
@@ -1536,6 +1552,10 @@ input:checked + .toggle-bg {
   gap: 2.5rem;
 }
 
+.gap-12 {
+  gap: 3rem;
+}
+
 .gap-x-10 {
   -moz-column-gap: 2.5rem;
        column-gap: 2.5rem;
@@ -1572,6 +1592,10 @@ input:checked + .toggle-bg {
 
 .overflow-y-auto {
   overflow-y: auto;
+}
+
+.overflow-y-scroll {
+  overflow-y: scroll;
 }
 
 .truncate {
@@ -1864,12 +1888,12 @@ input:checked + .toggle-bg {
   text-align: center;
 }
 
-.font-wilkysta {
-  font-family: Wilkysta;
-}
-
 .font-montserrat {
   font-family: Montserrat;
+}
+
+.font-wilkysta {
+  font-family: Wilkysta;
 }
 
 .text-2xl {
@@ -2114,10 +2138,6 @@ input:checked + .toggle-bg {
   padding: 0.2rem 0 0.2rem 0.5rem;
   background-color: #dec2ba89;
   color: #ffffff;
-}
-
-.hover\:border:hover {
-  border-width: 1px;
 }
 
 .hover\:border-2:hover {

@@ -84,9 +84,16 @@
         // ! search data
         public function searchData($data) {
             try {
-                $stmt = $this->connect()->prepare("SELECT rooms.* FROM rooms LEFT JOIN reservations ON rooms.room_id = reservations.room_id AND (:check_in BETWEEN reservations.check_in_date AND reservations.check_out_date OR :check_out BETWEEN reservations.check_in_date AND reservations.check_out_date OR (:check_in <= reservations.check_in_date AND :check_out >= reservations.check_out_date)) WHERE reservations.room_id IS NULL");
+                $stmt = "";
+                if($data["suite-type"]) {
+                    $stmt = $this->connect()->prepare("SELECT rooms.* FROM rooms LEFT JOIN reservations ON rooms.room_id = reservations.room_id AND (:check_in BETWEEN reservations.check_in_date AND reservations.check_out_date OR :check_out BETWEEN reservations.check_in_date AND reservations.check_out_date OR (:check_in <= reservations.check_in_date AND :check_out >= reservations.check_out_date)) WHERE reservations.room_id IS NULL AND rooms.room_type = :room_type AND rooms.suite_type = :suite_type");
+                }else {
+                    $stmt = $this->connect()->prepare("SELECT rooms.* FROM rooms LEFT JOIN reservations ON rooms.room_id = reservations.room_id AND (:check_in BETWEEN reservations.check_in_date AND reservations.check_out_date OR :check_out BETWEEN reservations.check_in_date AND reservations.check_out_date OR (:check_in <= reservations.check_in_date AND :check_out >= reservations.check_out_date)) WHERE reservations.room_id IS NULL AND rooms.room_type = :room_type");
+                }
                 $stmt->bindParam("check_in", $data["check-in"]);
                 $stmt->bindParam("check_out", $data["check-out"]);
+                $stmt->bindParam("room_type", $data["room-type"]);
+                $stmt->bindParam("suite_type", $data["suite-type"]);
                 if($stmt->execute()) {
                     return $stmt->fetchAll();
                 }

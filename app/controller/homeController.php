@@ -26,16 +26,43 @@ class homeController extends Controller {
         $this->view("home/sign-up", ["error" => $error]);
         $this->view->render();
     }
+    public function reservations() {
+        if(isUserLogged()) {
+            $this->view("home/client-dashboard", ["reservations" => $this->getUserReservations()]);
+            $this->view->render();
+        }else {
+            $this->log_in();
+        }
+    }
+    // get user reservations
+    public function getUserReservations() {
+        $this->model("Reservation");
+        $data = array(
+            "user-id" => $_SESSION["user_id"]
+        );
+        $reservations = $this->model->getUserReservations($data);
+        return $reservations;
+    }
     // search rooms
     public function searchRoom() {
         extract($_POST);
+        $data = array();
         // echo $room_type . " " . $suite_type . " " . $check_in . " " . $check_out;
-        $data = array(
-            "room-type" => $this->validateData($room_type),
-            "suite-type" => $this->validateData($suite_type),
-            "check-in" => $this->validateData(date("Y-m-d", strtotime($check_in))),
-            "check-out" => $this->validateData(date("Y-m-d", strtotime($check_out)))
-        );
+        if(!empty($suite_type)) {
+            $data = array(
+                "room-type" => $this->validateData($room_type),
+                "suite-type" => $this->validateData($suite_type),
+                "check-in" => $this->validateData(date("Y-m-d", strtotime($check_in))),
+                "check-out" => $this->validateData(date("Y-m-d", strtotime($check_out)))
+            );
+        }else {
+            $data = array(
+                "room-type" => $this->validateData($room_type),
+                "suite-type" => null,
+                "check-in" => $this->validateData(date("Y-m-d", strtotime($check_in))),
+                "check-out" => $this->validateData(date("Y-m-d", strtotime($check_out)))
+            );
+        }
         $this->model("Room");
         $rooms = $this->model->searchData($data);
         echo json_encode($rooms);

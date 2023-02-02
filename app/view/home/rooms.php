@@ -13,6 +13,7 @@
                         <div class="input-field mb-4 md:mb-0">
                             <label for="room-type" class="font-montserrat">Room Type</label>
                             <select id="room-type" name="room_type" class="text-secondary-clr w-full md:w-auto text-sm block p-2.5 mt-2 font-montserrat" required>
+                                <option value="all">All</option>
                                 <option value="single-bed">Single Bed</option>
                                 <option value="double-bed">Double Bed</option>
                                 <option value="suite">Suite</option>

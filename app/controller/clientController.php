@@ -83,7 +83,41 @@
                 );
                 // var_dump($data);
                 $this->model("Reservation");
-                $this->model->book_room($data);
+                if(!$this->model->checkAvailable($data)) {
+                    $this->model->book_room($data);
+                    $this->addGuests();
+                    echo json_encode(array("message" => "Room Booked Successfully!", "booked" => true));
+                }else {
+                    echo json_encode(array("message" => "sorry! this room is already booked in this time period!", "booked" => false));
+                }
+            }
+        }
+        // ! add guests
+        public function addGuests() {
+            extract($_POST);
+            if(!empty($guestsFnames) && !empty($guestsLnames) && !empty($guestsBdates)) {
+                $this->model("Reservation");
+                $reserve_id = $this->model->getReserveMaxId();
+                $this->model("Guest");
+                for($i = 0; $i < count($guestsFnames); $i++) {
+                    $data = array(
+                        "first-name" => $this->validateData($guestsFnames[$i]),
+                        "last-name" =>  $this->validateData($guestsLnames[$i]),
+                        "birth-date" => $this->validateData($guestsBdates[$i]),
+                        "reserve-id" => $this->validateData($reserve_id["reserve_id"])
+                    );
+                    $this->model->addGuets($data);
+                }
+            }
+        }
+        // ! cancel reservation
+        public function cancelReservation($id) {
+            $data = array(
+                "reserve-id" => $this->validateData($id)
+            );
+            $this->model("Reservation");
+            if($this->model->cancelReservation($data)) {
+                redirect("home/reservations");
             }
         }
         // validate inputs and remove special characters

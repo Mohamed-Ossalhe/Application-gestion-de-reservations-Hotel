@@ -7,7 +7,7 @@
     <!-- consfirm booking js script -->
     <script src="<?=BASE_URL?>public/assets/js/confirm-booking.js"></script>
     <!-- booking js script -->
-    <script src="<?=BASE_URL?>public/assets/js/book.js"></script>
+    <script src="<?=BASE_URL?>public/assets/js/guests.js"></script>
     <!-- form-validation-script -->
     <script src="<?= BASE_URL?>public/assets/js/form-validation.js"></script>
     <!-- search-form-script -->

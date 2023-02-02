@@ -15,7 +15,8 @@
     <!-- info -->
     <div class="container mx-auto px-20">
         <?php $roomDetails = $this->view_data["roomDetails"];?>
-        <a href="../rooms"><button class="py-2 px-4 border border-2 border-black text-black mt-4 rounded hover:bg-black hover:text-white transition">Go Back</button></a>
+        <a href="../rooms"><button class="py-2 px-4 border-2 border-black text-black mt-4 rounded hover:bg-black hover:text-white transition">Go Back</button></a>
+        <div class="book-message"></div>
         <div class="infos bg-orange-100 my-5 py-4 rounded drop-shadow-xl flex items-start justify-evenly">
             <div class="booked-room" id="<?=$roomDetails["room_id"]?>">
                 <h2 class="text-2xl font-bold mb-6">Room Info:</h2>
@@ -37,9 +38,9 @@
                 <div class="client-email"><span class="font-medium">Client Email:</span> <?=$_SESSION["email"]?></div>
                 <div class="client-email"><span class="font-medium">Client Phone Number:</span> <?=$_SESSION["phone_number"]?></div>
                 <div class="book-btns flex items-center gap-3  mt-20">
-                    <button class="add-guest hidden py-2 px-4 bg-black text-white border border-2 border-black hover:bg-transparent hover:text-black hover:border hover:border-2 hover:border-black transition rounded">Add Guest</button>
+                    <button class="add-guest hidden py-2 px-4 bg-black text-white border-2 border-black hover:bg-transparent hover:text-black hover:border-2 hover:border-black transition rounded">Add Guest</button>
                     <form class="confirm-booking" method="post">
-                        <button type="submit" name="try" class="py-2 px-4 bg-black text-white border border-2 border-black rounded hover:bg-transparent hover:text-black hover:border-black transition">Confirm Booking</button>
+                        <button type="submit" name="try" class="py-2 px-4 bg-black text-white border-2 border-black rounded hover:bg-transparent hover:text-black hover:border-black transition">Confirm Booking</button>
                     </form>
                 </div>
             </div>
@@ -47,9 +48,8 @@
     </div>
     <!-- form -->
     <div class="book-form hidden container mx-auto px-96 h-100 my-12">
-        <form method="post" class="h-full">
+        <form method="post" class="h-full add-guests-form">
             <div class="guests-form"></div>
-            <input type="submit" value="Add Guests" class="py-2 px-4 bg-black text-white rounded">
         </form>
     </div>
     <!-- ! end hero -->

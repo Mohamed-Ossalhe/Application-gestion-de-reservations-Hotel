@@ -7,7 +7,18 @@
         <div class="content overflow-y-auto h-4/5">
             <?php $i = 1; foreach($this->view_data["reservations"] as $reservation){?>
                 <!-- ! Card -->
-                <div class="card bg-white flex items-center justify-between px-4 py-4 mx-3 mb-4 rounded">
+                <div class="card bg-white flex flex-col items-start px-4 py-4 mx-3 mb-4 rounded">
+                    <div class="operations text-2xl cursor-pointer flex items-center justify-end w-full">
+                        <button class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded hover:bg-gray-100 focus:outline-none" title="Guests">
+                            <a href="<?=BASE_URL?>public/home/guests/<?=$reservation["reserve_id"]?>"><i class='bx bx-group text-2xl'></i></a>
+                        </button>
+                        <button class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded hover:bg-gray-100 focus:outline-none" title="Edit">
+                            <a href="#"><i class="bx bx-edit text-2xl"></i></a>
+                        </button>
+                        <button class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded hover:bg-gray-100 focus:outline-none" title="Cancel">
+                            <a href="<?=BASE_URL?>public/client/cancelReservation/<?=$reservation["reserve_id"]?>"><i class="bx bx-trash text-2xl"></i></a>
+                        </button>
+                    </div>
                     <div class="flex items-center gap-12">
                         <div class="id text-lg text-gray-500"><?=$i++?></div>
                         <div class="flex flex-col items-start">
@@ -44,27 +55,6 @@
                                 <i class="bx bx-money text-2xl text-secondary-clr"></i>
                                 <div class="name text-xl"><?=$reservation["total_price"]?></div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="operations text-2xl cursor-pointer">
-                        <!-- <i class="bx bx-cog"></i> -->
-                        <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots" class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded hover:bg-gray-100 focus:outline-none" type="button"> 
-                            <i class="bx bx-cog text-2xl"></i>
-                        </button>
-                        
-                        <!-- Dropdown menu -->
-                        <div id="dropdownDots" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                            <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
-                                <li>
-                                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Show Guests</a>
-                                </li>
-                                <li>
-                                    <a class="edit-res-btn block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit Reservation</a>
-                                </li>
-                                <li>
-                                    <a href="<?=BASE_URL?>public/client/cancelReservation/<?=$reservation["reserve_id"]?>" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Cancel Reservation</a>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>

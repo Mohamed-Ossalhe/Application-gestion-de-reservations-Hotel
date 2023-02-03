@@ -34,6 +34,14 @@ class homeController extends Controller {
             $this->log_in();
         }
     }
+    public function guests($id) {
+        if(isUserLogged()) {
+            $this->view("home/reservation-guests", ["guests" => $this->getReservationsGuests($id)]);
+            $this->view->render();
+        }else {
+            $this->log_in();
+        }
+    }
     // get user reservations
     public function getUserReservations() {
         $this->model("Reservation");
@@ -42,6 +50,15 @@ class homeController extends Controller {
         );
         $reservations = $this->model->getUserReservations($data);
         return $reservations;
+    }
+    // get user reservation guests
+    public function getReservationsGuests($id) {
+        $data = array(
+            "reserve-id" => $this->validateData($id)
+        );
+        $this->model("Guest");
+        $guests = $this->model->getGuests($data);
+        return $guests;
     }
     // search rooms
     public function searchRoom() {

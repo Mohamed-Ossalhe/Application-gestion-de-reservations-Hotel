@@ -17,5 +17,18 @@
                 return $e->getMessage();
             }
         }
+        public function getGuests($data) {
+            try {
+                $stmt = $this->connect()->prepare("SELECT * FROM `guests` WHERE reserve_id = :id");
+                $stmt->bindParam("id", $data["reserve-id"]);
+                if($stmt->execute()) {
+                    return $stmt->fetchAll();
+                }else {
+                    return false;
+                }
+            }catch(PDOException $e) {
+                return $e->getMessage();
+            }
+        }
     }
 ?>

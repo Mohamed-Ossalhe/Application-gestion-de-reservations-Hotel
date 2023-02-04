@@ -27,7 +27,7 @@
                 </li>
                 <h4 class="text-accent-clr text-lg md:text-xs uppercase">Profile Info</h4>
                 <li class="text-2xl md:text-base capitalize text-white hover:bg-accent-clr/30 hover:text-white transition py-2 pl-3">
-                    <a href="#" class="aside-menu-item flex gap-4 items-center">
+                    <a href="<?=BASE_URL?>public/home/updateProfile" class="aside-menu-item flex gap-4 items-center">
                         <i class='bx bx-cog text-accent-clr'></i>
                         <span>Update Profile</span>
                     </a>
@@ -43,8 +43,8 @@
                 <div class="side-user w-full my-6 text-white flex items-center gap-4">
                     <i class="bx bx-user-circle text-8xl md:text-4xl"></i>
                     <div class="user">
-                        <h3 class="text-2xl md:text-lg">skjdfljksdf</h3>
-                        <small class="text-sm md:text-xs">sldkcksd</small>
+                        <h3 class="text-2xl md:text-lg"><?=$_SESSION["username"]?></h3>
+                        <small class="text-sm md:text-xs"><?=$_SESSION["email"]?></small>
                     </div>
                 </div>
                 <div class="text-2xl md:text-base capitalize text-white hover:bg-accent-clr/30 hover:text-white transition py-2 pl-3">

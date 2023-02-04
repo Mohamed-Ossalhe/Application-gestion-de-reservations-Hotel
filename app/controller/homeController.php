@@ -42,6 +42,21 @@ class homeController extends Controller {
             $this->log_in();
         }
     }
+    public function updateProfile($error = "") {
+        if(isUserLogged()) {
+            $this->view("home/update-profile", ["client" => $this->getClientInfo(), "error" => $error]);
+            $this->view->render();
+        }else {
+            $this->log_in();
+        }
+    }
+    // get user Info
+    public function getClientInfo() {
+        $this->model("Client");
+        $data = array("id" => $_SESSION["user_id"]);
+        $client = $this->model->getClient($data);
+        return $client;
+    }
     // get user reservations
     public function getUserReservations() {
         $this->model("Reservation");

@@ -63,6 +63,25 @@
                 }
             }
         }
+        // ! update client info
+        public function updateClientInfo() {
+            if(isset($_POST["submit"])) {
+                if(!empty($_POST["email"]) && !empty($_POST["password"]) && !empty($_POST["first_name"]) && !empty($_POST["last_name"]) && !empty($_POST["phone_n"])) {
+                    $data = array(
+                        "email" => filter_var($this->validateData($_POST["email"]), FILTER_SANITIZE_EMAIL),
+                        "password" => password_hash($this->validateData($_POST["password"]), PASSWORD_DEFAULT),
+                        "f_name" => $this->validateData($_POST["first_name"]),
+                        "l_name" => $this->validateData($_POST["last_name"]),
+                        "phone_n" => $this->validateData($_POST["phone_n"])
+                    );
+                    $this->model->updateClient($data);
+                    redirect("home/updateProfile");
+                }else {
+                    $this->index("Please Fill All The Fields!");
+                    exit;
+                }
+            }
+        }
         // ! log out
         public function clientLogOut() {
             if(session_destroy()) {
